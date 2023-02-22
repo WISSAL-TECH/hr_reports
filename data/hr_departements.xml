@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ws_departements_1" model="hr.department">
+            <field name="name">DEPARTEMENT TECHNIQUE</field>
+        </record>
+
+        <record id="ws_departements_9" model="hr.department">
+            <field name="name">APPROVISIONNEMENT</field>
+            <field name="company_id">1</field>
+        </record>
+
+        <record id="ws_departements_2" model="hr.department">
+            <field name="name">CLOUD ET INFRASTRUCTURE</field>
+
+        </record>
+        <record id="ws_departements_3" model="hr.department">
+            <field name="name">ERP - PME - BI</field>
+
+        </record>
+        <record id="ws_departements_4" model="hr.department">
+            <field name="name">DEVELOPPEMENT</field>
+        </record>
+        <record id="ws_departements_5" model="hr.department">
+            <field name="name">COMMERCIAL ET MARKETING</field>
+        </record>
+        <record id="ws_departements_6" model="hr.department">
+            <field name="name">DIRECTION GENERALE</field>
+        </record>
+        <record id="ws_departements_7" model="hr.department">
+            <field name="name">RESSOURCES HUMAINES ET ADMINISTRATIF</field>
+        </record>
+        <record id="ws_departements_8" model="hr.department">
+            <field name="name">FINANCE</field>
+        </record>
+
+        <record id="ws_departements_1" model="hr.department">
+            <field name="name">DEPARTEMENT TECHNIQUE</field>
+        </record>
+
+    </data>
+</odoo>

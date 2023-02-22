@@ -1,0 +1,96 @@
+<odoo>
+    <record id="report_ws_attestation_de_travail" model="ir.actions.report">
+        <field name="name">Attestation de travail</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_attestation_de_travail</field>
+        <field name="report_file">hr_reports.ws_attestation_de_travail</field>
+        <field name="print_report_name">'Attestation de travail - %s' % (object.name).replace('/', '')</field>
+        <!--<field name="binding_model_id" ref="model_hr_employee"/>!-->
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_ws_certificat_de_travail" model="ir.actions.report">
+        <field name="name">Certificat de travail</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_certificat_de_travail</field>
+        <field name="report_file">hr_reports.ws_certificat_de_travail</field>
+        <field name="print_report_name">'Certificat de travail - %s' % (object.name).replace('/', '')</field>
+        <!--<field name="binding_model_id" ref="model_hr_employee"/>!-->
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_ws_contrat_de_travail" model="ir.actions.report">
+        <field name="name">Contrat de travail</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_contrat_de_travail</field>
+        <field name="report_file">hr_reports.ws_contrat_de_travail</field>
+        <field name="print_report_name">'Contrat de travail - %s' % (object.name).replace('/', '')</field>
+        <!--<field name="binding_model_id" ref="model_hr_employee"/>!-->
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_ws_attestation_de_stage" model="ir.actions.report">
+        <field name="name">Attestation de satge</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_attestation_de_stage</field>
+        <field name="report_file">hr_reports.ws_attestation_de_stage</field>
+        <field name="print_report_name">'Attestation de satge - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_type">report</field>
+    </record>
+
+      <record id="report_ws_fiche_de_poste" model="ir.actions.report">
+        <field name="name">Fiche de poste</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_fiche_de_poste</field>
+        <field name="report_file">hr_reports.ws_fiche_de_poste</field>
+        <field name="print_report_name">'Fiche de poste - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="paperformat_ats" model="report.paperformat">
+        <field name="name">European A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">2</field>
+        <field name="margin_bottom">1</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">1</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="report_ws_ats" model="ir.actions.report">
+        <field name="name">ATS</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_ats</field>
+        <field name="report_file">hr_reports.ws_ats</field>
+        <field name="paperformat_id" ref="hr_reports.paperformat_ats"/>
+        <field name="print_report_name">'ATS - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+      <record id="report_ws_drt" model="ir.actions.report">
+        <field name="name">DECLARATION DE REPRISE DU TRAVAIL</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_reports.ws_drt</field>
+        <field name="report_file">hr_reports.ws_drt</field>
+        <field name="paperformat_id" ref="hr_reports.paperformat_ats"/>
+        <field name="print_report_name">'DECLARATION DE REPRISE DU TRAVAIL - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

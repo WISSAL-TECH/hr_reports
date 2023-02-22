@@ -1,0 +1,66 @@
+<odoo>
+    <!-- _______________________________C O M P A N Y_______________________________!-->
+    <!-- Add new fields to Company!-->
+    <data>
+        <record id="ws_new_res_company_inherit_form" model="ir.ui.view">
+            <field name="name">company.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <div class="oe_title" position="inside">
+                    <group>
+                        <label for="manager_id"/>
+                        <h2>
+                            <field name="manager_id" placeholder="Select a manager"/>
+                        </h2>
+                        <label for="registration_number"/>
+                        <h2>
+                            <field name="registration_number" placeholder="Numero d'enregistrement"/>
+                        </h2>
+                        <label for="membership_number"/>
+                        <h2>
+                            <field name="membership_number" placeholder="Numero d'adhèsion"/>
+                        </h2>
+                    </group>
+                </div>
+            </field>
+        </record>
+    </data>
+
+
+    <!-- _______________________________C O N T R A C T_______________________________!-->
+    <!-- Add new fields to Contract!-->
+    <data>
+        <record id="ws_new_contract_inherit_form" model="ir.ui.view">
+            <field name="name">contract.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <group name="notes_group" position="before">
+                    <group>
+                        <group string="Formation">
+                            <field name="training_title"/>
+                            <field name="training_start_date"/>
+                            <field name="training_end_date"/>
+                        </group>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+
+    <!-- _______________________________payroll_______________________________
+    <data>
+            <record id="hr_salary_rule_form" model="ir.ui.view">
+                <field name="name">hr.salary.rule.form</field>
+                <field name="model">hr.salary.rule</field>
+                <field name="inherit_id" ref="hr_payroll_community.hr_salary_rule_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='code']" position="after">
+                        <field name="struct_id"/>
+                    </xpath>
+                </field>
+            </record>
+    </data> !-->
+
+</odoo>

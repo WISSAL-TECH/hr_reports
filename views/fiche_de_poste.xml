@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ws_fiche_de_poste">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <h1 align="center" style="font-family:Times New Roman"> <b>FICHE DE POSTE</b></h1>
+                    <head>
+                        <style>
+                            table, th, td {
+                            border: 1px solid black;
+                            border-collapse: collapse
+                            }
+                        </style>
+                    </head>
+                    <div class="page" style="font-size:13pt; font-family:Times New Roman">
+                        <table style="width:100%;">
+                            <tr style="height:30px">
+                                <th colspan="3" style="text-align:center; background-color: #84a3ae">Identification du
+                                    poste
+
+                                </th>
+                            </tr>
+                            <tr style="text-align:left">
+                                <th>Nom et Prénom du slarié</th>
+                                <td>
+                                    <span t-field="o.name"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align:left">
+                                <th>Poste ocuupé</th>
+                                <td>
+                                    <span t-field="o.job_title"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align:left">
+                                <th>Resposnable</th>
+                                <td>
+                                    <span t-field="o.parent_id"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align:left">
+                                <th>Service</th>
+                                <td>
+                                    <span t-field="o.department_id"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align:left">
+                                <th>Catégorie Socio-pro</th>
+                                <td>
+                                    <span t-field="o.socio_pro_category"/>
+                                </td>
+                            </tr>
+                            <br></br>
+                            <tr colspan="1" style="text-align:center; height:30px;">
+                                <th colspan="2" style="text-align:center;  background-color: #84a3ae">Finalités du poste
+                                    <tr>
+                                        <td colspan="2">
+                                            <span t-field="o.job_finality"></span>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                            <tr colspan="1" style="text-align:center; height:30px;">
+                                <th colspan="2" style="text-align:center;  background-color: #84a3ae">Missions
+                                    principales du poste
+                                    <tr>
+                                        <td colspan="2">
+                                            <span t-field="o.job_principal_mission"></span>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                            <tr colspan="1" style="text-align:center; height:30px;">
+                                <th colspan="2" style="text-align:center;  background-color: #84a3ae">Missions
+                                    secondaires du poste
+
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <span t-field="o.job_secondary_mission"></span>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                            <tr colspan="1" style="text-align:center; height:30px;">
+                                <th colspan="2" style="text-align:center;  background-color: #84a3ae">Taches du poste
+
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <span t-field="o.job_tasks"></span>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                            <tr colspan="1" style="height:30px;">
+                                <th colspan="2" style="text-align:center; background-color: #84a3ae">Profile du poste
+
+                                    <tr style="text-align:left">
+                                        <th>Formations/Diplomes</th>
+                                        <td>
+                                            <t t-foreach='o.resume_line_ids' t-as='line'>
+                                                <t t-if="line.line_type_id.name == 'Education'">
+                                                    <span t-field="line.name">, 
+                                                    </span>
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="text-align:left">
+                                        <th>Competences</th>
+                                        <td>
+                                            <span t-foreach='o.employee_skill_ids' t-as='line'>
+                                                <span t-field="line.skill_id"/>, 
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="text-align:left">
+                                        <th>Experiences professionnelles</th>
+                                        <td>
+                                            <t t-foreach='o.resume_line_ids' t-as='line'>
+                                                <t t-if="line.line_type_id.name == 'Experience'">
+                                                    <span t-field="line.name">, 
+                                                    </span>
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <p></p>
+                    <div style="font-size:13pt; font-family:Times New Roman">
+                        <h4 align="center">
+                            <b>Processus de validation</b>
+                        </h4>
+                        <table style="width:100%; text-align:center  ">
+                            <tr style=" height:30px">
+                                <td style=" background-color: #84a3ae">
+                                    <b>L'interessé(e)</b>
+                                </td>
+                                <td style=" background-color: #84a3ae">
+                                    <b>Responsable de la structure</b>
+                                </td>
+                                <td style=" background-color: #84a3ae">
+                                    <b>Responsable RH</b>
+                                </td>
+                            </tr>
+                            <tr style=" height:30px">
+                                <td>
+                                    Date: ...........................
+                                </td>
+                                <td>
+                                    Date: .................................
+                                </td>
+                                <td>
+                                    Date: ...........................
+                                </td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>
+                                    <br></br>
+                                </td>
+                                <td>
+                                    <br></br>
+                                </td>
+                                <td>
+                                    <br></br>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

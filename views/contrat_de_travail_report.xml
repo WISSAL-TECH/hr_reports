@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ws_contrat_de_travail">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h3 style="font-family: Times New Roman; font-weight: bold; text-align: center; margin-bottom: 4em">
+                            CONTRAT DE TRAVAIL A DUREE INDETERMINEE
+                        </h3>
+                        <span style="font-family: Times New Roman">
+                            <p style="margin-left: 2.5em; font-size: 12pt">
+                                <p>
+                                    <b>Entre la société WISSAL SYSTEMS</b>, immatriculée au Registre du
+                                    commerce et des sociétés sous le numéro 19/01-0089758B12, dont le siège social
+                                    est situé au Cite
+                                    74 Lots Makam El-chahid – Setif, représentée par
+
+
+                                    <b>Monsieur
+                                        Ilias BOUKERKER</b>, en sa qualité de Gérant,
+
+
+                                </p>
+                                <p></p>
+                                <p style="text-align:right;">
+                                    <i>Ci-après désignée par « La
+                                        société »,
+                                    </i>
+                                </p>
+                                <p style="text-align:right;">
+                                    <b>D'une part,</b>
+                                </p>
+                                <p>
+                                    <b></b>
+                                </p>
+                                <p>
+                                    <b>Et</b>
+                                </p>
+                                <p style="font-size: 12pt">
+                                    <b style=" font-weight: bold">
+                                        <i>Monsieur/Madame:  </i>
+                                        <span t-field="o.name"/>
+                                    </b>
+                                    <span>
+                                        <i>né(e) le:  </i>
+                                        <span style=" font-weight: bold" t-field="o.birthday"/>,
+
+
+                                        <span>
+                                            <i>    à: </i>
+                                            <span style=" font-weight: bold" t-field="o.place_of_birth"/> , de
+                                            nationalité
+                                            Algérienne, numéro de Sécurité Sociale :
+                                            ......................,
+                                        </span>
+                                    </span>
+                                    <span>
+                                        Demeurant au Adresse:
+                                        <span t-field="o.address_home_id"/>
+                                    </span>
+                                    .
+                                </p>
+                                <p>
+                                    <br></br>
+                                </p>
+                                <p style="text-align:right;">
+                                    <i>Ci-après désignée par « La
+                                        société »,
+                                    </i>
+                                </p>
+                                <p style="text-align:right;">
+                                    <b>D'autre part,</b>
+                                </p>
+                                <p>
+                                    <b> </b>
+                                </p>
+                                <p style="font-size: 12pt;font-weight: bold">
+                                    Il a été convenu ce qui suit:  
+                                </p>
+                            </p>
+                            <br></br>
+                            <p>
+                                <p>
+                                    <b>
+                                        <u>ARTICLE 1 – OBJET DU CONTRAT</u>
+                                    </b>
+                                    <p style="font-size:12.0pt">Le présent contrat a pour objet de définir les
+                                        conditions d’emploi et de travail du salarié dans le cadre d’une relation de
+                                        travail.
+                                    </p>
+                                    <p></p>
+                                    <p>Il est établi conformément aux dispositions de la
+                                        loi 90.11 du 21.04.1990 modifiée et complétée relative aux relations de
+                                        travail
+                                        ainsi que celles du règlement intérieur de la société.
+                                    </p>
+                                </p>
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>
+                                <b>
+                                    <u>ARTICLE 2 – NATURE ET DUREE DU CONTRAT</u>
+                                </b>
+                            </p>
+                            <p>Le présent contrat est conclu pour
+                                une durée indéterminée et à temps plein à compter du
+                                <span style="font-weight: bold" t-field="o.first_contract_date"/>,
+                            </p>
+
+                            <p>
+                                <br></br>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 3 – EXECUTION DE LA RELATION DE TRAVAIL</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>3.1. Poste et d’affectation :</u>
+                                </b>
+                            </p>
+                            <p>
+                                Le/La
+                                salarié(e) est recruté(e) en qualité de
+                                <span style="font-weight: bold" t-field="o.job_title"/>,
+                                <b>Niveau 1</b>
+                                à
+                                compter du
+                                <span style="font-weight: bold" t-field="o.first_contract_date"/>,
+                            </p>
+                            <p>
+                                <b>
+                                    <u>3.2. Missions et responsabilités du poste :</u>
+                                </b>
+                            </p>
+                            <p>Le/La salarié(e) aura à exécuter les missions, tâches
+                                et responsabilités qui lui sont confiées dans le cadre de sa fiche de poste,
+                                laquelle est susceptible d’évoluer selon les besoins de la société. Ainsi, le/la
+                                salarié(e) pourra être appelé(e) à effectuer toutes autres tâches correspondant
+                                à sa qualification professionnelle.
+                            </p>
+                            <p>
+                                <b>
+                                    <u>3.3. Lieu d’affectation et mobilité :</u>
+                                </b>
+                            </p>
+                            <p>
+                                Le salarié exercera
+                                ses fonctions au siège de la société sise à Sétif. Néanmoins, l’Employeur se
+                                réserve le droit, pour des raisons liées à l'organisation et/ou au bon fonctionnement
+                                de la société, de transférer, de manière temporaire ou définitive, le lieu de
+                                travail sur un autre lieu. En outre et dans le cadre de ses fonctions, le salarié
+                                peut être appelé à effectuer des missions à l’intérieur du territoire national
+                                ou à l’étranger.
+                            </p>
+                            <p> </p>
+                            <p>Les parties
+                                conviennent que la mobilité de Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                 est une condition
+                                déterminante à la conclusion
+                                du présent contrat.
+                            </p>
+                            <p> </p>
+                            <p>En
+                                conséquence, Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                 ne pourra pas invoquer la modification de
+                                son
+                                lieu de travail et de ses conditions de travail pour refuser d’exécuter ses
+                                fonctions.
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 4 – PERIODE D’ESSAI</u>
+                                </b>
+                            </p>
+                            <p>Le salarié (e) est soumis(e) à une période d’essai
+                                d’une durée de <b>01 mois</b> effectif à compter de la date d’entrée en vigueur
+                                du présent contrat.
+                            </p>
+                            <p style="page-break-before:always;"></p>
+
+                            <p>Durant cette période d’essai, le contrat de travail
+                                peut être résilié et la relation de travail rompue à tout moment par l’une ou
+                                l’autre partie sans indemnité ni préavis. Si la rupture du contrat de travail,
+                                durant cette période, est à l’initiative de l’employeur, la clause de
+                                dédit-formation ne pourra être actionnée.
+                            </p>
+
+                            <p>
+                                <br></br>
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 5 - REMUNERATION</u>
+                                </b>
+                            </p>
+
+                            <p>En contrepartie du travail fourni, Le salarié percevra
+                                une rémunération mensuelle composée d’un net de Vingt Mille dinars zéro centime
+                                (20 000,00 DZD).
+                            </p>
+                            <p> </p>
+                            <p>En sus de cette rémunération, le salarié peut
+                                bénéficier d’indemnités et primes liées au poste selon l’organisation du
+                                travail et suivant les termes de la politique de rémunération et performance de
+                                la société.
+                            </p>
+                            <p> </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 6 – CLAUSE DE DEDIT-FORMATION</u>
+                                </b>
+                            </p>
+                            <t t-foreach="request.env['hr.contract'].search([('employee_id', '=', o.id)])"
+                               t-as="obj">
+
+                                <p>Monsieur/Madame
+                                    <span style=" font-weight: bold" t-field="o.name"/>
+                                    suivra une formation pendant
+                                    la période allant du
+                                    <span style="font-weight: bold" t-field="obj.training_start_date"/>,
+                                    au
+                                    <span style="font-weight: bold" t-field="obj.training_end_date"/>.
+                                    Cette formation doit permettre à
+                                    Monsieur/Madame
+                                    <span style=" font-weight: bold" t-field="o.name"/>
+                                    de parfaire ses connaissances et d'améliorer ses
+                                    compétences dans son emploi de développement.
+                                </p>
+                            </t>
+                            <p> </p>
+                            <p>Pendant cette formation, Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                sera intégralement maintenu et l'entreprise lui remboursera en totalité ses
+                                frais de déplacement.
+                            </p>
+                            <p>Le coût de cette formation est entièrement pris en
+                                charge par l'entreprise. Il s'élève à 300 000,00 DZA
+                            </p>
+                            <p> </p>
+                            <p>Cette formation n'est pas incluse dans le plan de
+                                formation de l'entreprise et les frais correspondant excèdent l'obligation
+                                légale de l'entreprise en matière de participation au financement de la
+                                formation professionnelle.
+                            </p>
+                            <p> </p>
+                            <p>En contrepartie, Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                s'engage à
+                                rester au service de l'entreprise, pendant une durée minimale de 3 ans, à compter
+                                de la fin de sa formation.
+                            </p>
+                            <p> </p>
+                            <p>En conséquence, dans le cas où Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                quitterait l'entreprise de sa propre initiative avant la fin de la formation,
+                                ou bien à la suite d'une démission ou d'un licenciement pour faute grave ou
+                                lourde, pendant le délai indiqué ci-dessus, il serait tenu de rembourser les
+                                frais de formation ainsi engagés par l'entreprise, soit « 300 000,00
+                                DZA »
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>
+                                <b>
+                                    <u>ARTICLE 7 – PROTECTION SOCIALE</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>Le salarié  bénéficie de la couverture sociale
+                                « régime général » de la sécurité sociale (CNAS), conformément à la
+                                législation en vigueur.
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 8 – HORAIRES DE TRAVAIL</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>La durée légale de travail est celle fixée par la
+                                réglementation en vigueur. 
+                            </p>
+                            <p>Les horaires de travail sont fixés par l’employeur, qui
+                                détient un pouvoir d’appréciation, selon les besoins de la société, et les
+                                spécificités de chaque poste de travail.
+                            </p>
+                            <p>L’établissement des horaires de travail relève des
+                                prérogatives de l’employeur, qui peut les moduler selon les impératifs de
+                                gestion et nécessités de service.
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 9 – REPOS ET CONGES PAYES</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>Les jours de repos légaux et du congé payé, congés
+                                spéciaux sont ceux fixés par la réglementation en vigueur et le règlement
+                                intérieur de la société.
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 10 – HEURES SUPPLEMENTAIRES</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>L’employeur peut faire appel au salarié pour effectuer
+                                des heures supplémentaires au-delà de la durée légale de travail, suivant les
+                                dispositions légales et réglementaires.
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 11 – DROITS ET OBLIGATIONS DU SALARIE</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>
+                                <b>
+                                    <u>11.1. Droits du salarié (e):</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>Les droits du salarié(e) se limitent strictement à ceux
+                                stipulés dans le présent contrat. En conséquence, le/la salarié(e) ne saurait
+                                prétendre à aucun paiement, indemnité, compensation ou autre avantage qui ne
+                                sont pas expressément prévus dans le présent contrat.
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>11.2. Obligations du salarié (e):</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>Pendant la durée du présent contrat, le salarié (e)
+                                est tenu au strict respect des dispositions de la législation du travail et du
+                                règlement intérieur de l’entreprise.
+                            </p>
+
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>Le/La salarié(e) s’engage à :</p>
+                            <p> </p>
+                            <p style="margin-left: 2em">·  
+                                A accomplir
+                                pleinement les taches inhérentes à son poste de travail dans le respect des
+                                normes professionnelles et ce, de manière continue, à exécuter les instructions
+                                et à observer toutes les consignes particulières données par sa hiérarchie dans
+                                l’exercice de ses fonctions, et à se soumettre aux dispositions du règlement
+                                intérieur de La société.
+                            </p>
+                            <p> </p>
+                            <p style="margin-left: 2em">·  
+                                Veiller au respect
+                                de l’obligation de réserve, de confidentialité et de discrétion, notamment, en
+                                ce qui concerne l’organisation, les processus, les techniques et technologies
+                                ou tout autre information concernant la société susceptible de porter préjudice
+                                aux intérêts de cette dernière.
+                            </p>
+                            <p> </p>
+                            <p style="margin-left: 2em">·  
+                                Participer aux
+                                actions de formation et de perfectionnement planifiées par la société.
+                            </p>
+                            <p> </p>
+                            <p style="margin-left: 2em">·  
+                                N’accepter aucune
+                                rémunération, prime ou intéressement, avantage en nature, cadeau et plus
+                                généralement, directement ou indirectement, tout avantage matériel de la part
+                                d’une autre société concurrente
+                            </p>
+                            <br></br>
+                            <p>Tout
+                                manquement à ces obligations pourrait amener la société à engager des
+                                poursuites disciplinaires prévues par le règlement intérieur.
+                            </p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 12 – MATERIEL MIS A DISPOSITION</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>Le matériel et les documents remis au salarié pour
+                                l’exercice de sa fonction sont à usage professionnelle et ne doivent, en aucun
+                                cas être communiqués à l’extérieur de la société.
+                            </p>
+                            <p></p>
+                            <p>Lors de la cessation du contrat de travail, le
+                                contractant devra restituer tout le matériel et documents de travail mis à sa
+                                disposition pour l’exercice de ces fonctions ou produit par lui dans l’exercice
+                                de ses fonctions.
+                            </p>
+                            <p></p>
+                            <p></p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 13 – ADHESION AUX VALEURS DU GROUPE</u>
+                                </b>
+                            </p>
+                            <p></p>
+                            <p>La salariée s’engage à respecter les valeurs du groupe,
+                                à les diffuser et les faire respecter par l’ensemble de ses collaborateurs et
+                                partenaires.
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>
+                                <b>
+                                    <u>ARTICLE 14 – CESSATION ET SUSPENSION DE LA RELATION DE
+                                        TRAVAIL
+                                    </u>
+                                </b>
+                            </p>
+                            <p>
+                                Il pourra être mis fin au présent
+                                contrat
+                                de plein droit par la société, pour les motifs suivants :
+
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                Licenciement disciplinaire.
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                Démission du salarié (e), dans ce
+                                cas, celui-ci est tenu au respect du préavis de 60 jours, cette période, peut
+                                être réduite ou annulée par la volonté exclusive de l’employeur.
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                Abandon de poste.
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                La nullité ou l’abrogation légale du
+                                présent contrat.
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                L’incapacité totale de travail telle
+                                que définie par la législation en vigueur.
+                            </p>
+                            <p style="margin-left: 2em">·  
+                                Accord mutuel des parties.
+                            </p>
+                            <p> </p>
+                            <p>Les cas de suspension de la
+                                relation de travail sont fixés par la réglementation en vigueur et le règlement
+                                intérieur de la société.
+                            </p>
+                            <p> </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 15 – ABANDON DE POSTE</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>Le fait de quitter son poste de travail sans
+                                autorisation de l'employeur ou de s'absenter de manière prolongée ou répétée
+                                sans justificatif pendant ses heures de travail peut être constitutif d’un
+                                abandon de poste. La société dispose du droit de déposer plainte auprès des
+                                autorités compétentes à l’encontre du travailleur ayant abandonné son poste et
+                                ayant causé un préjudice à l’employeur.
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 16 – PASSATION DE CONSIGNES</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>En cas de résiliation du
+                                présent contrat de travail, le salarié doit procéder à la passation de
+                                consignes avec la personne désignée par la société à cet effet, notamment en
+                                communiquant tous les dossiers dont il a la charge, les projets en cours ainsi
+                                que les démarches entreprises et les contacts en cours dans le cadre de ses
+                                fonctions.
+                            </p>
+                            <p> </p>
+                            <p>
+                                <b>
+                                </b>
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 17 – MODIFICATION DU CONTRAT</u>
+                                </b>
+                            </p>
+                            <p>Le présent contrat pourra être
+                                modifié par la volonté commune des deux parties, par voie d’avenant accepté et
+                                signé par les deux parties.
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>
+                                <b>
+                                    <u>ARTICLE 18 – CONFLITS D’INTERETS ET OBLIGATION
+                                        D’EXCLUSIVITE
+                                    </u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>A la
+                                signature du présent contrat, Monsieur/Madame<span style=" font-weight: bold"
+                                                                                   t-field="o.name"/>, qu’il n’a aucune
+                                obligation, aucun intérêt de quelque sorte et de quelque nature que ce soit
+                                avec un quelconque employeur précédent ou plus généralement, avec une
+                                quelconque personne physique ou morale de toute nature, qui puisse influer sur
+                                ses activités au service de la Société ou présenter un risque de conflit
+                                d’intérêts pour la Société, ses partenaires ou ses clients.
+                            </p>
+                            <p> </p>
+                            <p>Pendant
+                                toute la durée du contrat, Monsieur/Madame<span style=" font-weight: bold"
+                                                                                t-field="o.name"/>, s’interdit de
+                                travailler ou de collaborer, à quelque titre que ce soit, par lui-même ou par
+                                personne physique ou morale interposée, pour une entreprise concurrente ou non
+                                de la Société.
+                            </p>
+                            <p> </p>
+                            <p>Enfin Monsieur/Madame<span style=" font-weight: bold" t-field="o.name"/>,
+                                s’oblige, par ailleurs, à consacrer tout son temps d’activité professionnelle à
+                                l’exercice de sa fonction.
+                            </p>
+                            <p> </p>
+                            <p>
+
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 19 - CLAUSE DE NON-CONCURRENCE</u>
+                                </b>
+                            </p>
+                            <p> </p>
+                            <p>Compte tenu
+                                de la nature de ses fonctions, Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                                s'interdit, en cas
+                                de
+                                cessation du présent contrat, quelle qu'en soit la cause :
+                            </p>
+                            <p> </p>
+                            <p style="margin-left: 3em">- D’entrer au service d'une
+                                entreprise pouvant concurrencer la Société, ou de lui apporter son concours ou
+                                ses services de quelque manière et à quelque titre que ce soit :
+                            </p>
+                            <p style="margin-left: 3em">
+                                - De s'intéresser directement ou indirectement à toute
+                                entreprise susceptible de concurrencer la Société.
+                            </p>
+                            <p style="margin-left: 3em">
+                                - De prospecter les clients de l’entreprise.
+                            </p>
+                            <p>
+                                Les
+                                activités interdites sont les suivantes : Etudes et développement et le
+                                conseil en informatique.
+                            </p>
+                            <p> </p>
+                            <p>Cette
+                                interdiction de concurrence est limitée à une période de 2 ans, commençant le
+                                jour de la cessation effective du contrat, c'est à dire à compter de la fin du
+                                préavis s'il y a lieu, et couvre le territoire national.
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+
+                            <p>
+                                <b>
+                                    <u>ARTICLE 20 – INTERDICTION DE DEBAUCHAGE DE SALARIES ET
+                                        UTILISATION D’INFORMATIONS CONFIDENTIELLES
+                                    </u>
+                                </b>
+                            </p>
+                            <p>
+                                <b>
+                                </b>
+                            </p>
+                            <p>Au cours de
+                                son contrat de travail et pendant 2 ans après son expiration, Monsieur/Madame
+                                <span style=" font-weight: bold" t-field="o.name"/>,
+                                s'interdit, directement ou indirectement de :
+                            </p>
+                            <p style="margin-left: 3em">-
+                                 Recruter aucun
+                                salarié de la Société, de ses filiales ou de sociétés du Groupe, ou seulement
+                                de le convaincre de, ou inciter à, quitter son emploi,
+                            </p>
+                            <p style="margin-left: 3em">-
+                                 D’utiliser ou
+                                faire utiliser des informations confidentielles, dont il aurait eu connaissance
+                                pendant son emploi.
+                            </p>
+                            <p style="margin-left: 3em">-
+                                Travailler pour le compte des clients de l’entreprise
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 21 – REGLEMENT DES LITIGES</u>
+                                </b>
+                            </p>
+
+                            <p>Conformément à la loi 90-04 du 06 février 1990,
+                                relative au règlement des conflits individuels du travail, le/la salarié(e)
+                                soumet, obligatoirement, tout éventuel différend à la direction générale de la
+                                société avant de soumettre son cas aux instances administratives compétentes en
+                                la matière.
+                            </p>
+                            <p> </p>
+                            <p>Dans le cas où cette procédure n’aboutit pas, le
+                                litige sera soumis à la compétence du tribunal territorialement compétant de
+                                Sétif.
+                            </p>
+
+                            <p>
+
+                            </p>
+                            <p>
+                                <b>
+                                    <u>ARTICLE 22 – CONNAISSANCE DES CLAUSES CONTRACTUELLES</u>
+                                </b>
+                            </p>
+
+                            <p>L’employé déclare avoir pris connaissance des
+                                dispositions réglementaires en vigueur et de l’ensemble des clauses régissant
+                                le présent contrat et s’engage à respecter scrupuleusement dans leur forme et
+                                dans leur fond.
+                            </p>
+
+                            <p>
+                                <br></br>
+                            </p>
+                            <p></p>
+                            <p>Fait à Sétif,
+                                le ..................... en deux exemplaires originaux dont un pour chacune des parties.
+                            </p>
+                            <p>
+                                <br></br>
+                            </p>
+                            <p>
+
+                            </p>
+                            <p style="text-align:center">
+                                <b>
+                                    <i>Ce contrat comporte 08 pages paraphées par les
+                                        parties.
+                                    </i>
+                                    <br/>
+                                    <i>Faire précéder les signatures des
+                                        mentions "Lu et approuvé"
+                                    </i>
+                                </b>
+                            </p>
+
+
+                            <p>
+                                <b> </b>
+                            </p>
+                            <p style="text-align:center">
+                                <b>Pour la Société WISSAL SYSTEMS                                        
+                                                                    Le
+                                    salarié                          
+                                </b>
+                            </p>
+                            <p style="text-align:center">
+                                <b>Monsieur Iias BOUKERKER                                                       
+                                    Mr/Mme
+                                </b>
+                                <span style=" font-weight: bold" t-field="o.name"/>
+                            </p>
+
+                            <p style="page-break-before:always;"></p>
+                        </span>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

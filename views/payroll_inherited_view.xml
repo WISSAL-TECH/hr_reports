@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="ws_action_irg_view" model="ir.actions.act_window">
+            <field name="name">Barème IRG</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bareme.irg</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create anything
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="irg_bareme_menu"
+                  name="Barème IRG"
+                  parent="hr_payroll_community.menu_hr_payroll_community_configuration"
+                  action="ws_action_irg_view"/>
+        <!-- FOR ENTREPRISE>>>> parent="hr_payroll.menu_hr_salary_configuration"!-->
+
+        <record id="irg_tree_view" model="ir.ui.view">
+            <field name="name">bareme.irg.tree</field>
+            <field name="model">bareme.irg</field>
+            <field name="arch" type="xml">
+                <tree string="IRG">
+                    <field name="irg_salaire_imposable"/>
+                    <field name="irg_regime_general"/>
+                    <field name="irg_cas_particulier"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

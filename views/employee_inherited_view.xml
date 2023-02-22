@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ws_rh_employee_view_form">
+            <field name="name">hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <div class="oe_title" position="inside">
+                    <group>
+                        <field name="is_trainee"/>
+                        <field name="training_duration" attrs="{'invisible': [('is_trainee', '=', 'employee')]}"/>
+                        <field name="date_start_training" attrs="{'invisible': [('is_trainee', '=', 'employee')]}"/>
+                        <field name="date_end_training" attrs="{'invisible': [('is_trainee', '=', 'employee')]}"/>
+                    </group>
+                </div>
+
+                <notebook position="inside">
+                    <page name="job_infos" string="Fiche de poste">
+                        <group>
+                            <group>
+                                <field name="job_description"/>
+                                <field name="job_finality"/>
+                            </group>
+                            <group>
+                                <field name="job_principal_mission"/>
+                                <field name="job_secondary_mission"/>
+                                <field name="job_tasks"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+
+                <xpath expr="//field[@name='children']" position="after">
+                    <field name="father_name"/>
+                    <field name="mother_name"/>
+                    <field name="children_names"/>
+                </xpath>
+
+                <xpath expr="//field[@name='work_location_id']" position="after">
+                    <field name="work_mode"/>
+                    <field name="experience_years"/>
+                </xpath>
+
+                <xpath expr="//field[@name='country_id']" position="after">
+                    <field name="document_type"/>
+                </xpath>
+
+                <page name="hr_settings">
+                    <group name="payroll_group" position="inside">
+                        <group>
+                            <field name="socio_pro_category"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Période d'essai">
+                            <field name="date_start_trial"/>
+                            <field name="date_end_trial"/>
+                            <field name="prolongation"/>
+                            <field name="prolongation_duration" attrs="{'invisible':[('prolongation','!=', True)]}"/>
+                            <field name="date_start_prolongation" attrs="{'invisible':[('prolongation','!=', True)]}"/>
+                            <field name="date_end_prolongation" attrs="{'invisible':[('prolongation','!=', True)]}"/>
+                        </group>
+                        <group string="CNAS">
+                            <field name="social_security_number"/>
+                            <field name="social_advantages"/>
+                            <field name="contributions_nature"
+                                   attrs="{'invisible':[('social_advantages','!=', True)]}"/>
+                            <field name="abatement_decision_number"
+                                   attrs="{'invisible':[('social_advantages','!=', True)]}"/>
+                            <field name="date_start_abatement"
+                                   attrs="{'invisible':[('social_advantages','!=', True)]}"/>
+                            <field name="date_end_abatement" attrs="{'invisible':[('social_advantages','!=', True)]}"/>
+                        </group>
+                    </group>
+                    <group string="Départ">
+                        <group>
+                            <field name="no_active_employee"/>
+                            <field name="departure_date" attrs="{'invisible':[('no_active_employee','!=', True)]}"/>
+                            <field name="departure_reason" attrs="{'invisible':[('no_active_employee', '!=', True)]}"/>
+                        </group>
+                    </group>
+
+                </page>
+
+                <notebook>
+                    <page string="Équipement" name="equipement">
+                        <group>
+                            <group string="Équipement">
+                                <field name="equipment_owner"/>
+                            </group>
+                            <group string="Types d'équipement">
+
+                                <field name="pc"/>
+                                <field name="pc_grant_date" attrs="{'invisible':[('pc','!=', True)]}"/>
+                                <field name="pc_characteristics" attrs="{'invisible':[('pc','!=', True)]}"/>
+
+                                <field name="peripheral"/>
+                                <field name="peripheral_grant_date"
+                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
+                                <field name="peripheral_characteristics"
+                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
+
+                                <field name="components"/>
+                                <field name="components_grant_date"
+                                       attrs="{'invisible':[('components','!=', True)]}"/>
+                                <field name="components_characteristics"
+                                       attrs="{'invisible':[('components','!=', True)]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <notebook>
+                    <page string="Information's Sur Salaire">
+                        <group string="Primes et Indemnités">
+                            <group>
+                                <field name="cart_allowance"/>
+                                <field name="transport_allowance"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

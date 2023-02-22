@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ws_attestation_de_travail">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1 style="font-weight: bold; text-align: center; margin-bottom: 4em; border: 1px solid black;">
+                            ATTESTAION DE TRAVAIL
+                        </h1>
+                        <span style="margin-left: 9em; margin-top:120px">
+                            <p style="margin-left: 2.5em; font-size: 14pt;">
+                                <span style="margin-left: 2em">Je soussigné, Monsieur 
+                                          <t t-set="manager" t-value="request.env['hr.employee'].search([('job_title','ilike','MANAGER')],limit=1,).name" />
+                                    <span style="font-weight: bold" t-esc="manager" />,
+
+                                    agissant en qualité de gérant de la société
+                                    <span>
+                                        <span style="font-weight: bold " t-field="o.company_id"/>,
+                                    </span>
+                                     enregistrée
+                                    sous
+                                    le
+                                    numéro
+                                    <span style="font-weight: bold " t-field="o.company_id.registration_number"/>,
+                                    domiciliée à: 
+                                    <span style="font-weight: bold " t-field="o.address_id.street"/>, 
+                                    <span style="font-weight: bold " t-field="o.address_id.zip"/>, 
+                                    <span style="font-weight: bold " t-field="o.address_id.city"/>, 
+                                    <span style="font-weight: bold " t-field="o.address_id.country_id"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Atteste que </i>
+                                </span>
+                                <span style=" font-weight: bold">
+                                    <i>M. </i>
+                                    <span t-field="o.name"/>
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Né(e) le:  </i>
+                                    <span style=" font-weight: bold" t-field="o.birthday"/>,
+                                    <span>
+                                        <i>    à:  </i>
+                                        <span style=" font-weight: bold" t-field="o.place_of_birth"/>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Demeurant à:  </i>
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.street"/>,
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.city"/>,
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.country_id"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span><i>Numéro de Sécurité Sociale :</i>
+                                   <span style=" font-weight: bold" t-field="o.social_security_number"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>Est employé(e) au sein de notre entreprise en qualité de: 
+
+                                    <span style="font-weight: bold" t-field="o.job_title"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>À temps plein, et à titre d’un contrat de
+                                    travail à durée indéterminée
+                                    depuis le: 
+
+                                    <span style="font-weight: bold" t-field="o.first_contract_date"/>, et qu'il(elle) n'est ni
+                                    en période d'essai, ni démissionnaire, ni en procédure de licenciement.
+                                </span>
+                            </p>
+                            <p style="margin-left: 4em;font-size: 14pt">
+                                <span>La présente attestation lui est
+                                    délivrée
+                                    pour
+                                    servir
+                                    et
+                                    valoir ce que de droit.
+                                </span>
+                            </p>
+                            <p>
+                                <br/>
+                            </p>
+                            <p>
+                                <br/>
+                            </p>
+                            <p>
+                                <br/>
+                            </p>
+                            <p style="margin-left: 3em">
+                                <span style=" font-size: 14pt; text-decoration: underline; font-weight: bold">Le
+                                    Gérant
+                                </span>
+                            </p>
+                        </span>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

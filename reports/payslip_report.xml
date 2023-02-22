@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ws_report_payslip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <h2 style="font-weight: bold; text-align: center; margin-bottom: 2em; border: 1px solid black;  background-color: #6cb9ff;">
+                        BULLETIN DE PAIE
+                    </h2>
+                    <div class="page">
+                        <table class="table table-sm table-bordered">
+                            <tr>
+                                <th colspan="2" style="text-align:center; background-color: #84a3ae">Employeur</th>
+                                <tr>
+                                    <th style="text-align:center; background-color: #84a3ae" width="150px">
+                                        Num Empl: 1961383550
+                                    </th>
+                                    <td width="150px" rowspan="2">
+                                        Raison Sociale: SARL WISSAL-SYSTEMS
+                                        <BR/>
+                                        Adresse: LOTS 74 MAKAM CHAHID SETIF
+                                        <BR/>
+                                        Activité: BUREAU D'ETUDES INFORMATIQUES
+                                        <BR/>
+                                        RC: 19/01-00899758B12
+                                        <BR/>
+                                        NIF: 001219008975878
+                                        <BR/>
+                                    </td>
+                                    <tr>
+                                        <th width="150px" style="text-align:center;">
+                                            <div>
+                                                <img t-att-src="image_data_uri(o.company_id.logo)" width="60%"
+                                                     height="60%"/>
+                                            </div>
+                                        </th>
+
+                                    </tr>
+                                </tr>
+
+                            </tr>
+                        </table>
+
+                        <table class="table table-sm table-bordered">
+                            <tr>
+                                <th colspan="4" style="text-align:center; background-color: #84a3ae">Salarié
+                                    <tr>
+                                        <td width="150px">
+                                            <strong>Nom</strong>
+                                            <br/>
+                                            <strong>Date de naissance</strong>
+                                            <br/>
+                                            <strong>Designation</strong>
+                                            <br/>
+                                            <strong>Date d'entrée</strong>
+                                            <br/>
+                                            <strong>N°SS</strong>
+                                            <br/>
+                                            <strong>Address</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.employee_id"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.birthday"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.job_id"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.first_contract_date"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.social_security_number"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.address_home_id.street"/>,
+                                            <span t-field="o.employee_id.address_home_id.city"/>,
+                                            <span t-field="o.employee_id.address_home_id.country_id"/>
+                                        </td>
+                                        <td width="150px">
+                                            <strong>Salaire de base</strong>
+                                            <br/>
+                                            <strong>N° de compte</strong>
+                                            <br/>
+                                            <strong>Mode de paiement</strong>
+                                            <br/>
+                                            <strong>Situation familiale</strong>
+                                            <br/>
+                                            <strong>Nombre d'enfants</strong>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.employee_id.contract_id.wage"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.bank_account_id"/>
+                                            <br/>
+                                            ESPECE
+                                            <br/>
+                                            <span t-field="o.employee_id.marital"/>
+                                            <br/>
+                                            <span t-field="o.employee_id.children"/>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Date From</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.date_from"/>
+                                </td>
+                                <td>
+                                    <strong>Date To</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.date_to"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr style="background-color: #84a3ae; text-align:center;">
+                                    <th width="15px">Code</th>
+                                    <th>Désignation</th>
+                                    <th>Nbre/Taux</th>
+                                    <th>Montant</th>
+                                    <th>Gaints</th>
+                                    <th>Retenues</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <span
+                                        t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                        t-as="line">
+                                    <tr t-att-class="line_class" t-att-style="line_style"
+                                        class="bg-linear-gradient(135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%) text-black">
+                                        <td style="width:15px">
+                                            <span t-field="line.code"/>
+                                        </td>
+                                        <td style="text-align:left;"><!-- t-if="line.name != &quot;total retenues&quot;" !-->
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <span>
+                                                <t t-if="line.code not in [&quot;R201&quot;,&quot;ABS&quot;,&quot;R301&quot;]">
+                                                    <t t-set="days"
+                                                       t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                                            ('code', 'ilike', 'JT')]).total"/>
+                                                    <span t-esc="days"/>
+                                                    <t/>
+                                                </t>
+                                                <t t-if="line.code == &quot;R201&quot;"
+                                                   t-esc="line.rate">
+                                                </t>
+                                                <t t-if="line.code == &quot;R301&quot;"
+                                                   t-esc="1.0">
+                                                </t>
+                                            </span>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <span>
+                                                <span t-esc="line.amount"
+                                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                            </span>
+                                        </td>
+                                        <td class="text-right" style="text-align:center;">
+                                            <span t-esc="line.total"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"
+                                                  t-att-style="'color:#875A7B;' if line.total &lt; 0 else ''"
+                                                  t-if="line.category_id.code not in [&quot;DED&quot;,&quot;RET&quot;]"/>
+                                        </td>
+                                        <td class="text-right" style="text-align:center;">
+                                            <span t-esc="line.total"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"
+                                                  t-att-style="'color:#875A7B;' if line.total &lt; 0 else ''"
+                                                  t-if="line.category_id.code in [&quot;RET&quot;,&quot;DED&quot;]"/>
+                                        </td>
+                                    </tr>
+                                </span>
+
+
+                                <tr style="background-color: #84a3ae; text-align:center;">
+                                    <th colspan="2">SALAIRE DE POSTE</th>
+                                    <th>SALIARE IMPOSABLE</th>
+                                    <th>TOTAL GAINS</th>
+                                    <th>TOTAL RETENUES</th>
+                                    <th>NET A PAYER</th>
+                                </tr>
+
+                                <tr style="text-align:center; font-weight: bold; height:40px">
+                                    <td colspan="2">
+                                        <span>
+                                            <t t-set="rule"
+                                               t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                               ('code', 'ilike', 'SP')]).total"/>
+                                            <span t-esc="rule"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span>
+                                            <t t-set="rule"
+                                               t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                               ('name', 'ilike', 'SALAIRE IMPOSABLE')]).total"/>
+                                            <span t-esc="rule"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span>
+                                            <t t-set="rule"
+                                               t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                               ('code', 'ilike', 'TG')]).total"/>
+                                            <span t-esc="rule"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span>
+                                            <t t-set="rule"
+                                               t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                               ('code', 'ilike', 'TR')]).total"/>
+                                            <span t-esc="rule"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <t t-set="rule"
+                                               t-value="request.env['hr.payslip.line'].search([('slip_id', '=', o.id),
+                                               ('code', 'ilike', 'NAP')]).total"/>
+                                            <span t-esc="rule"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <br>
+
+                                </br>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bareme_irg,bareme.irg,model_bareme_irg,base.group_user,1,1,1,1
+access_children,children,model_children,base.group_user,1,1,1,1
+access_payroll_report_wiz,payroll.report.wiz,model_payroll_report_wiz,base.group_user,1,1,1,1
+access_payroll_report_excel,payroll.report.excel,hr_reports.model_payroll_report_excel,base.group_user,1,1,1,1

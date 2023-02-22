@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="GAIN" model="hr.salary.rule.category">
+            <field name="name">Gains</field>
+            <field name="code">GAIN</field>
+        </record>
+        <!--
+        <record id="ws_rule_category_2" model="hr.salary.rule.category">
+            <field name="name">Cotisable</field>
+            <field name="code">COT</field>
+
+        </record>
+        <record id="ws_rule_category_3" model="hr.salary.rule.category">
+            <field name="name">Déduction</field>
+            <field name="code">DED</field>
+        </record>
+        <record id="ws_rule_category_4" model="hr.salary.rule.category">
+            <field name="name">Gains</field>
+            <field name="code">GAIN</field>
+        </record>
+        <record id="ws_rule_category_5" model="hr.salary.rule.category">
+            <field name="name">Imposabl</field>
+            <field name="code">IMP</field>
+        </record>
+        <record id="ws_rule_category_6" model="hr.salary.rule.category">
+            <field name="name">Abattement</field>
+            <field name="code">IRG</field>
+        </record>
+        <record id="ws_rule_category_7" model="hr.salary.rule.category">
+            <field name="name">Retenue</field>
+            <field name="code">RET</field>
+        </record>
+        <record id="ws_rule_category_8" model="hr.salary.rule.category">
+            <field name="name">Salaire cotisable</field>
+            <field name="code">SC</field>
+        </record>
+        <record id="ws_rule_category_9" model="hr.salary.rule.category">
+            <field name="name">Salaire de poste</field>
+            <field name="code">SDP</field>
+        </record>
+        <record id="ws_rule_category_10" model="hr.salary.rule.category">
+            <field name="name">Salaire imposable</field>
+            <field name="code">SI</field>
+        </record>
+
+        <record id="structure_salary" model="hr.payroll.structure">
+            <field name="code">SALARY</field>
+            <field name="name">Salariés</field>
+            <field eval="[(6, 0, [ref('hr_rule_basic'), ref('hr_rule_taxable'),ref('hr_rule_net')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record> !-->
+
+    </data>
+</odoo>

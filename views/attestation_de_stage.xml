@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ws_attestation_de_stage">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="border-style: ridge border-color:red">
+                        <h1 style="font-weight: bold; text-align: center;font-family: Times New Roman; margin-bottom: 4em;">
+                            ATTESTATION DE STAGE
+                        </h1>
+                        <span style="margin-left: 9em; margin-top:100px;font-family: Times New Roman">
+                            <p style="margin-left: 2.5em; font-size: 14pt">
+                                <span style="margin-left: 2em">Je, soussigné Monsieur 
+                                    <t t-set="manager"
+                                       t-value="request.env['hr.employee'].search([('job_title','ilike','MANAGER')],limit=1,).name"/>
+                                    <span style="font-weight: bold" t-esc="manager"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Atteste que l'etudiant(e): </i>
+                                </span>
+                                <span style=" font-weight: bold" t-field="o.name"/>
+
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Né(e) le: </i>
+                                    <span style=" font-weight: bold" t-field="o.birthday"/>,
+
+
+                                    <span>
+                                        <i>    à:  </i>
+                                        <span style=" font-weight: bold" t-field="o.place_of_birth"/>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>
+                                    <i>Demeurant à:  </i>
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.street"/>,
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.city"/>,
+                                    <span style=" font-weight: bold" t-field="o.address_home_id.country_id"/>,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>A effectué un stage de :  
+                                    <span style="font-weight: bold" t-field="o.training_duration"/> 
+                                    semaines,
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>Au niveau de l'organisme d'accueil 
+                                    <span style="font-weight: bold" t-field="o.company_id"/>
+                                </span>
+                            </p>
+                            <p style="margin-left: 2.5em;font-size: 14pt">
+                                <span>Durant la pèriode de: 
+                                    <span style="font-weight: bold" t-field="o.date_start_training"/>   à:
+                                    <span style="font-weight: bold" t-field="o.date_end_training"/>
+                                </span>
+                            </p>
+                            <p>
+                                <br></br>
+                            </p>
+                            <p style="margin-left: 4em;font-size: 14pt">
+                                <span>Fait à Setif Le.
+                                </span>
+                            </p>
+                            <p>
+                                <br/>
+                            </p>
+
+                            <p>
+                                <br/>
+                            </p>
+                            <p style="margin-left: 2em">
+                                <b>Le responsable de l'établissement                                               
+                                                        
+                                    Le responsable de l'organisme         
+                                </b>
+                            </p>
+                            <p style="margin-left: 2em">
+                                <b>de l'enseignement supérieur                                                        
+                                    d'auccueil Mr.
+
+                                    <t t-set="manager"
+                                       t-value="request.env['hr.employee'].search([('job_title','ilike','MANAGER')],limit=1,).name"/>
+                                    <span t-esc="manager"/>
+                                </b>
+                            </p>
+                        </span>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
