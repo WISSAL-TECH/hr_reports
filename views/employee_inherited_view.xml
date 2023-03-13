@@ -21,6 +21,8 @@
                             <group>
                                 <field name="job_description"/>
                                 <field name="job_finality"/>
+                                <field name="file_upload" filename="file_name"/>
+                                <field name="file_name" invisible="1"/>
                             </group>
                             <group>
                                 <field name="job_principal_mission"/>

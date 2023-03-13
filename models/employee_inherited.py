@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class hr_report(models.Model):
     _inherit = 'hr.employee'
 
-    is_trainee = fields.Selection([('stagiaire', 'Stagiaire'), ('employee', 'Employé')], default="employee", string="Type", translate=True)
+    is_trainee = fields.Selection([('stagiaire', 'Stagiaire'), ('employee', 'Employé')], default="Employé", string="Type", translate=True)
     date_start_training = fields.Date(string="Date de début de stage", invisible=True)
     date_end_training = fields.Date(string="Date de fin de stage", invisible=True)
     training_duration = fields.Integer(string="Pèriode de stage", invisible=True)
@@ -67,3 +67,7 @@ class hr_report(models.Model):
 
     cart_allowance = fields.Float(string="Prime de panier")
     transport_allowance = fields.Float(string="Indemnité de transport")
+    file_upload = fields.Binary(string="Fiche de poste")
+    file_name = fields.Char(string="File name")
+
+
