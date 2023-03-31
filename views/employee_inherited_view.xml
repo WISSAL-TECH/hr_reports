@@ -112,16 +112,6 @@
                         </group>
                     </page>
                 </notebook>
-                <notebook>
-                    <page string="Information's Sur Salaire">
-                        <group string="Primes et Indemnités">
-                            <group>
-                                <field name="cart_allowance"/>
-                                <field name="transport_allowance"/>
-                            </group>
-                        </group>
-                    </page>
-                </notebook>
             </field>
         </record>
     </data>
