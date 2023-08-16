@@ -45,6 +45,18 @@
                         </group>
                     </group>
                 </group>
+                <xpath expr="//group[@name='salary']" position="inside">
+                        <label for="cart_allowance"/>
+                        <div class="o_row" name="cart_allowance">
+                            <field name="cart_allowance"  nolabel="1" on_change="1" widget="monetary"/>
+                            <span/>
+                        </div>
+                        <label for="transport_allowance"/>
+                        <div class="o_row" name="transport_allowance">
+                            <field name="transport_allowance" nolabel="1" on_change="1" widget="monetary"/>
+                            <span/>
+                        </div>
+                </xpath>
             </field>
         </record>
     </data>

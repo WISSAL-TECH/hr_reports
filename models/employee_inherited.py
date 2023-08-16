@@ -68,6 +68,7 @@ class hr_report(models.Model):
     cart_allowance = fields.Float(string="Prime de panier")
     transport_allowance = fields.Float(string="Indemnité de transport")
     file_upload = fields.Binary(string="Fiche de poste")
+    cv_upload = fields.Binary(string="CV")
     file_name = fields.Char(string="File name")
     document_ids = fields.Binary(
 

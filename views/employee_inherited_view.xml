@@ -44,12 +44,12 @@
                     <field name="work_mode"/>
                     <field name="experience_years"/>
                 </xpath>
-                <xpath expr="//page[@name='public']" position="inside">
-                    <group>
-                        <field name="document_ids" options="{'no_create': True}" string="Cv"/>
-                    </group>
-                </xpath>
 
+                 <xpath expr="//page[@name='public']" position="inside">
+                <group><group>
+                    <field name="cv_upload" options="{'no_create': True}" string="Curriculum Vitae"/>
+                </group></group>
+            </xpath>
 
                 <xpath expr="//field[@name='country_id']" position="after">
                     <field name="document_type"/>
@@ -89,10 +89,7 @@
                             <field name="departure_reason" attrs="{'invisible':[('no_active_employee', '!=', True)]}"/>
                         </group>
                     </group>
-
                 </page>
-
-
             </field>
         </record>
     </data>
