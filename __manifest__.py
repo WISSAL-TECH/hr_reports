@@ -37,6 +37,7 @@
         'views/attestation_de_stage.xml',
         'views/payroll_inherited_view.xml',
         'views/ats.xml',
+        'views/hrpyslipe.xml',
         'views/fiche_de_poste.xml',
         'views/employee_inherited_view.xml',
         'views/declaration_de_reprise_du_travail.XML',
