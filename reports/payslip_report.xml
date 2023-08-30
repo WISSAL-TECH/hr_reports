@@ -16,7 +16,7 @@
                                         Num Empl: 1961383550
                                     </th>
                                     <td width="150px" rowspan="2">
-                                        Raison Sociale: SARL WISSAL-SYSTEMS
+                                        Raison Sociale: SARL WISSAL-SYSTEMS-RH
                                         <BR/>
                                         Adresse: LOTS 74 MAKAM CHAHID SETIF
                                         <BR/>
@@ -86,8 +86,6 @@
                                         </td>
                                         <td>
                                             <span t-field="o.employee_id.contract_id.wage"/>
-                                            <br/>
-                                            <span t-field="o.employee_id.bank_account_id"/>
                                             <br/>
                                             ESPECE
                                             <br/>
