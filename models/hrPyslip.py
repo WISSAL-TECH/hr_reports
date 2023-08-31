@@ -415,8 +415,8 @@ class WsPayslip(models.Model):
         alocation = 0
         for line in self.line_ids:
             if line.code in [self.primTrans, self.primPanier]:
-                alocation+=line.total
-        salaireImposable = salairePoste - rss +alocation
+                alocation += line.total
+        salaireImposable = salairePoste - rss + alocation
         self.salaireImposable = salaireImposable
         return salaireImposable
 
@@ -648,7 +648,7 @@ class InputeLineIDS(models.Model):
 
     name = fields.Many2one('hr.salary.rule', string='Description', required=False)
     salaryRule = fields.Many2one('hr.salary.rule', string='Description')
-    contract_id = fields.Many2one('hr.contract')
+    contract_id = fields.Many2one('hr.contract', related='payslip_id.contract_id')
     code = fields.Char(required=False, related='salaryRule.code')
 
 class RuleLine(models.Model):
