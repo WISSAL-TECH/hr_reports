@@ -37,7 +37,7 @@ class WsPayslip(models.Model):
     listCodeJourTravailer = [codeJourTrav, codeHorsup, codeAbsence]
     listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission]
     listCodeRetenues = [retenuSS, irg]
-    @api.onchange('contract_id')
+    @api.onchange('contract_id', 'struct_id')
     def Hrline(self):
         for rec in self:
             if rec.contract_id :
