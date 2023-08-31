@@ -297,7 +297,7 @@ class WsPayslip(models.Model):
         amount = 0
         if Prestation:
             for rec in Prestation:
-                amount+= round(rec.duration / 8, 2)
+                amount+= round(rec.duration , 2)
 
         return amount
 
@@ -646,9 +646,9 @@ class PayslipWorked_days(models.Model):
 class InputeLineIDS(models.Model):
     _inherit = 'hr.payslip.input'
 
-
+    name = fields.Many2one('hr.salary.rule', string='Description', required=False)
     salaryRule = fields.Many2one('hr.salary.rule', string='Description')
-    contract_id = fields.Many2one('hr.contract', related='payslip_id.contract_id')
+    contract_id = fields.Many2one('hr.contract')
     code = fields.Char(required=False, related='salaryRule.code')
 
 class RuleLine(models.Model):

@@ -47,6 +47,7 @@
         'views/declaration_de_reprise_du_travail.XML',
         'reports/hr_payroll_report.xml',
         'reports/payslip_report.xml',
+        'reports/pyslip_reports.xml',
 
 
     ],
