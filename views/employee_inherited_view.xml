@@ -90,6 +90,47 @@
                         </group>
                     </group>
                 </page>
+<<<<<<< HEAD
+=======
+
+                <notebook>
+                    <page string="Équipement" name="equipement">
+                        <group>
+                            <group string="Équipement">
+                                <field name="equipment_owner"/>
+                            </group>
+                            <group string="Types d'équipement">
+
+                                <field name="pc"/>
+                                <field name="pc_grant_date" attrs="{'invisible':[('pc','!=', True)]}"/>
+                                <field name="pc_characteristics" attrs="{'invisible':[('pc','!=', True)]}"/>
+
+                                <field name="peripheral"/>
+                                <field name="peripheral_grant_date"
+                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
+                                <field name="peripheral_characteristics"
+                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
+
+                                <field name="components"/>
+                                <field name="components_grant_date"
+                                       attrs="{'invisible':[('components','!=', True)]}"/>
+                                <field name="components_characteristics"
+                                       attrs="{'invisible':[('components','!=', True)]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <notebook>
+                    <page string="Information's Sur Salaire">
+                        <group string="Primes et Indemnités">
+                            <group>
+                                <field name="cart_allowance"/>
+                                <field name="transport_allowance"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+>>>>>>> parent of 32af99e (remove duplicated fields)
             </field>
         </record>
     </data>
