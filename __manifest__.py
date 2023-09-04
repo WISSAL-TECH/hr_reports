@@ -20,7 +20,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'hr'],
+    'depends': ['base',
+                'hr',
+                'hr_gamification',
+                'hr_payroll_community',
+                'hr_work_entry'],
 
     # always loaded
     'data': [
@@ -28,7 +32,7 @@
         'wizard/payroll_report_wiz.xml',
         'data/hr_departements.xml',
         'data/hr_job.xml',
-        #'data/salary_rules.xml',
+        'data/salary_rules.xml',
         'views/attestation_de_travail_report.xml',
         'views/attestation_travail_template.xml',
         'views/certificat_de_travail_report.xml',
@@ -37,11 +41,13 @@
         'views/attestation_de_stage.xml',
         'views/payroll_inherited_view.xml',
         'views/ats.xml',
+        'views/hrpyslipe.xml',
         'views/fiche_de_poste.xml',
         'views/employee_inherited_view.xml',
         'views/declaration_de_reprise_du_travail.XML',
         'reports/hr_payroll_report.xml',
         'reports/payslip_report.xml',
+        'reports/pyslip_reports.xml',
 
 
     ],

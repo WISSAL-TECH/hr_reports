@@ -15,13 +15,14 @@
                     </group>
                 </div>
 
+
                 <notebook position="inside">
                     <page name="job_infos" string="Fiche de poste">
                         <group>
                             <group>
                                 <field name="job_description"/>
                                 <field name="job_finality"/>
-                                <field name="file_upload" filename="file_name"/>
+                                <field name="file_upload"/>
                                 <field name="file_name" invisible="1"/>
                             </group>
                             <group>
@@ -43,6 +44,12 @@
                     <field name="work_mode"/>
                     <field name="experience_years"/>
                 </xpath>
+
+                 <xpath expr="//page[@name='public']" position="inside">
+                <group><group>
+                    <field name="cv_upload" options="{'no_create': True}" string="Curriculum Vitae"/>
+                </group></group>
+            </xpath>
 
                 <xpath expr="//field[@name='country_id']" position="after">
                     <field name="document_type"/>
@@ -82,36 +89,7 @@
                             <field name="departure_reason" attrs="{'invisible':[('no_active_employee', '!=', True)]}"/>
                         </group>
                     </group>
-
                 </page>
-
-                <notebook>
-                    <page string="Équipement" name="equipement">
-                        <group>
-                            <group string="Équipement">
-                                <field name="equipment_owner"/>
-                            </group>
-                            <group string="Types d'équipement">
-
-                                <field name="pc"/>
-                                <field name="pc_grant_date" attrs="{'invisible':[('pc','!=', True)]}"/>
-                                <field name="pc_characteristics" attrs="{'invisible':[('pc','!=', True)]}"/>
-
-                                <field name="peripheral"/>
-                                <field name="peripheral_grant_date"
-                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
-                                <field name="peripheral_characteristics"
-                                       attrs="{'invisible':[('peripheral','!=', True)]}"/>
-
-                                <field name="components"/>
-                                <field name="components_grant_date"
-                                       attrs="{'invisible':[('components','!=', True)]}"/>
-                                <field name="components_characteristics"
-                                       attrs="{'invisible':[('components','!=', True)]}"/>
-                            </group>
-                        </group>
-                    </page>
-                </notebook>
             </field>
         </record>
     </data>

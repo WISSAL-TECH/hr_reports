@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payroll_form_inherit" model="ir.ui.view">
+            <field name="name">payroll</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll_community.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page//field[@name='worked_days_line_ids']" position="before">
+                    <field name="checkInputs" invisible="1" widget="boolean_toggle"/>
+                    <button confirm="Etes-vous sur d'importer depuis la time sheet?"
+                            type="object" name="ImportPrestation"
+                            class="d-flex justify-content-end"
+                            attrs="{'invisible' : [('checkInputs', '=', False)]}"
+                    >
+                        Importer la Prestation
+                    </button>
+                </xpath>
+
+                <xpath expr="//field[@name='contract_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//form//group[@col='4']//field[@name='struct_id']" position="replace">
+                    <field name="struct_id" required="True"/>
+                    <field name="ruleIds" widget="one2many" invisible="1"/>
+                    <field name="ruleIds2" widget="one2many" invisible="1"/>
+                </xpath>
+                <xpath expr="//form//notebook//page//field[@name='worked_days_line_ids']" position="replace">
+                    <field name="worked_days_line_ids">
+                        <tree string="Worked Days" editable="bottom">
+                            <field name="work_entry_type"/>
+                            <field name="code"/>
+                            <field name="number_of_days" sum="Total Working Days"/>
+                            <field name="number_of_hours" sum="Total working hours"/>
+                            <field name="contract_id"/>
+                            <field name="sequence" invisible="True"/>
+                        </tree>
+                    </field>
+                </xpath>
+                <!--autre entrée-->
+                <xpath expr="//form//notebook//page//field[@name='input_line_ids']" position="replace">
+                    <field name="input_line_ids" colspan="4" nolabel="1">
+                        <tree string="Input Data" editable="bottom">
+                            <field name="salaryRule"/>
+                            <field name="code" required="False" string="Code régle"/>
+                            <field name="amount"/>
+                            <field name="contract_id" invisible="1"/>
+                            <field name="sequence" invisible="True"/>
+                        </tree>
+                    </field>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="mode_pyment"/>
+                </xpath>
+                <!--button-->
+            </field>
+        </record>
+    </data>
+</odoo>
