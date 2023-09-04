@@ -13,14 +13,14 @@
                             class="d-flex justify-content-end"
                             attrs="{'invisible' : [('checkInputs', '=', False)]}"
                     >
-                        Importer  la Prestation
+                        Importer la Prestation
                     </button>
                 </xpath>
 
                 <xpath expr="//field[@name='contract_id']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
-               <xpath expr="//form//group[@col='4']//field[@name='struct_id']" position="replace">
+                <xpath expr="//form//group[@col='4']//field[@name='struct_id']" position="replace">
                     <field name="struct_id" required="True"/>
                     <field name="ruleIds" widget="one2many" invisible="1"/>
                     <field name="ruleIds2" widget="one2many" invisible="1"/>
@@ -28,8 +28,8 @@
                 <xpath expr="//form//notebook//page//field[@name='worked_days_line_ids']" position="replace">
                     <field name="worked_days_line_ids">
                         <tree string="Worked Days" editable="bottom">
-                            <field name="work_entry_type" />
-                            <field name="code" />
+                            <field name="work_entry_type"/>
+                            <field name="code"/>
                             <field name="number_of_days" sum="Total Working Days"/>
                             <field name="number_of_hours" sum="Total working hours"/>
                             <field name="contract_id"/>
@@ -44,12 +44,13 @@
                             <field name="salaryRule"/>
                             <field name="code" required="False" string="Code régle"/>
                             <field name="amount"/>
-
-
                             <field name="contract_id" invisible="1"/>
                             <field name="sequence" invisible="True"/>
                         </tree>
                     </field>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="mode_pyment"/>
                 </xpath>
                 <!--button-->
             </field>

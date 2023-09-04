@@ -15,6 +15,9 @@ class WsContractInherit(models.Model):
     tjm = fields.Monetary("Tjm")
 
 
+
+
+
     salire_net = fields.Monetary("Salaire mensuel (net)")
     salire_anuell = fields.Monetary("Salaire annuel (brut)")
     salire_monsuel = fields.Monetary("salaire mensuel (brut")

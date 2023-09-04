@@ -8,6 +8,8 @@ from odoo import http
 class WsPayslip(models.Model):
     _inherit = 'hr.payslip'
 
+
+
     nbr_hors_contract = fields.Integer(string="Jours hors contrat")
     out_contract = fields.Integer("Calcule salaire de jours hors contrat")
     checkInputs = fields.Boolean(default=True)
@@ -18,9 +20,9 @@ class WsPayslip(models.Model):
     ruleOtherIds = fields.One2many('hr.salary.rule', 'payslipId')
     ruleIds = fields.One2many('hr.salary.rule', 'payslipId')
     ruleIds2 = fields.One2many('hr.salary.rule', 'payslipId')
-
-
-
+    mode_pyment = fields.Selection([('ESPECE', 'ESPECE'),
+                                    ('VERSEMENT', 'VERSEMENT')
+                                    ], 'Mode de pyment', default='ESPECE')
 
     # code structure paie
     codeJourTrav = 'WORK100'
@@ -37,6 +39,7 @@ class WsPayslip(models.Model):
     listCodeJourTravailer = [codeJourTrav, codeHorsup, codeAbsence]
     listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission]
     listCodeRetenues = [retenuSS, irg]
+
 
 
     @api.onchange('contract_id', 'struct_id')

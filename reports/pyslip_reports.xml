@@ -69,8 +69,8 @@
                                             <br/>
                                             <span t-field="o.employee_id.social_security_number"/>
                                             <br/>
-                                            <span t-field="o.employee_id.address_home_id.street"/>,
-                                            <span t-field="o.employee_id.address_home_id.city"/>,
+                                            <span t-field="o.employee_id.address_home_id.name"/>
+                                            <span t-field="o.employee_id.address_home_id.city"/>
                                             <span t-field="o.employee_id.address_home_id.country_id"/>
                                         </td>
                                         <td width="150px">
@@ -85,9 +85,11 @@
                                             <strong>Nombre d'enfants</strong>
                                         </td>
                                         <td>
-                                            <span t-field="o.employee_id.contract_id.wage"/>
+                                            <span t-field="o.contract_id.wage"/>
                                             <br/>
-                                            ESPECE
+                                            <span t-field="o.employee_id.bank_account_id.acc_number"/>
+                                            <br/>
+                                            <span t-field="o.mode_pyment"/>
                                             <br/>
                                             <span t-field="o.employee_id.marital"/>
                                             <br/>
