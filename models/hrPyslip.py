@@ -37,6 +37,8 @@ class WsPayslip(models.Model):
     listCodeJourTravailer = [codeJourTrav, codeHorsup, codeAbsence]
     listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission]
     listCodeRetenues = [retenuSS, irg]
+
+
     @api.onchange('contract_id', 'struct_id')
     def Hrline(self):
         for rec in self:
@@ -160,11 +162,11 @@ class WsPayslip(models.Model):
             new_list_timesheet = []
             for i in list_prestation:
                 nbr_heure += i.duration
-                nbr_jour = round(nbr_heure / 8, 2)
+                nbr_jour = round(nbr_heure / 8, 4)
 
         else:
             # afficher un message que la feuille de temps est vide
-            raise ValidationError("Erreur!, La feuille de temps est vide!!")
+            raise ValidationError("Erreur!, La Prestaion  de temps est vide!!")
         return nbr_jour
 
 
@@ -197,7 +199,7 @@ class WsPayslip(models.Model):
                 'work_entry_type': id_dayBS.work_entry_type_id.id,
                     'code':self.codeAbsence,
                     'number_of_hours': dayabsence,
-                    'number_of_days': round(dayabsence / 8, 2),
+                    'number_of_days': round(dayabsence / 8, 4),
                     'contract_id': contrat_id,
             }
         else:
@@ -215,7 +217,7 @@ class WsPayslip(models.Model):
                 'code': self.codeHorsup,
                 'work_entry_type': id_hsup.work_entry_type_id.id,
                     'number_of_hours': heureSuplim,
-                    'number_of_days': round(heureSuplim / 8, 2),
+                    'number_of_days': round(heureSuplim / 8, 4),
                     'contract_id': contrat_id,
             }
         else:
@@ -231,7 +233,7 @@ class WsPayslip(models.Model):
                     'payslip_id': id_payslip,
                 'code': self.codeJourTrav,
                 'work_entry_type': id_jrT.work_entry_type_id.id,
-                    'number_of_hours': round(jourTravail * 8, 2),
+                    'number_of_hours': round(jourTravail * 8, 4),
                     'number_of_days': jourTravail,
                     'contract_id': contrat_id,
             }
@@ -297,7 +299,7 @@ class WsPayslip(models.Model):
         amount = 0
         if Prestation:
             for rec in Prestation:
-                amount+= round(rec.duration , 2)
+                amount+= round(rec.duration , 4)
 
         return amount
 
@@ -330,7 +332,7 @@ class WsPayslip(models.Model):
         wage = self.getSalareParDays(res)
         if wage:
             wageDays = wage / 22
-            wageDays = round((wageDays), 2)
+            wageDays = round((wageDays), 4)
             return wageDays
         else:
             return 0
@@ -343,7 +345,7 @@ class WsPayslip(models.Model):
         wage = self.getSalareParDays(res)
         if wage:
             wageDays = wage / 22
-            salary_out_contract = round((self.nbr_hors_contract * wageDays), 2)
+            salary_out_contract = round((self.nbr_hors_contract * wageDays), 4)
             return salary_out_contract
         else:
             return 0
@@ -373,12 +375,15 @@ class WsPayslip(models.Model):
         today = date.today().year
         cr = self._cr
         res_id = self.employee_id.id
-        sql = "select min(date_start) from hr_contract where employee_id = "+str(res_id)
+        sql = f"SELECT MIN(date_start) FROM hr_contract WHERE state = 'open' AND employee_id = {res_id}"
+
         cr.execute(sql)
         result = self.env.cr.fetchall()
         if result[0][0]:
             date_start = result[0][0]
             year = date_start.year
+            print(date_start.year, "contra exp")
+            print(today - year, "year exp")
             return today - year
         else:
             return 0
@@ -394,7 +399,7 @@ class WsPayslip(models.Model):
                     if line.code == self.salaireBase:
                         line.quantity = rec.number_of_days
                         line.rate = round(1, 2)
-                        amount = round(self.contract_id.wage / 22, 2)
+                        amount = round(self.contract_id.wage / 22, 4)
                         line.amount = amount
                         line.total = amount * line.quantity
                         salaireBase = line.total
@@ -434,8 +439,8 @@ class WsPayslip(models.Model):
                     if line.code == "WORK300":
                         line.quantity = rec.number_of_hours
                         line.rate = round(1, 2)
-                        line.amount = round((self.contract_id.cout_hours * 1.5), 2)
-                        line.total = round(line.amount * line.quantity, 2)
+                        line.amount = round((self.contract_id.cout_hours * 1.5), 4)
+                        line.total = round(line.amount * line.quantity, 4)
                         break
 
 
@@ -473,7 +478,7 @@ class WsPayslip(models.Model):
                 yearExp = line.quantity
                 line.amount = salaireBase
                 line.rate = round(1, 2)
-                line.total = round(salaireBase * yearExp/100, 2)
+                line.total = round(salaireBase * yearExp/100, 5)
                 break
     def calSalaireRSS(self):
         """
@@ -494,7 +499,7 @@ class WsPayslip(models.Model):
                 self.salairePoste = line.amount
                 line.rate = round(9, 2)
                 line.quantity = None
-                line.total = round((line.amount * 9) / 100, 2)
+                line.total = round((line.amount * 9) / 100, 4)
                 break
     def calAlocation(self):
         """
@@ -509,13 +514,13 @@ class WsPayslip(models.Model):
             if line.code == self.primTrans:
                 line.quantity = qte
                 line.rate = round(1, 2)
-                line.amount = round(self.contract_id.travel_allowance, 2)
-                line.total = round(line.amount * line.quantity, 0)
+                line.amount = round(self.contract_id.travel_allowance, 4)
+                line.total = round(line.amount * line.quantity, 4)
             if line.code == self.primPanier:
                 line.quantity = qte
                 line.rate = round(1, 2)
-                line.amount = round(self.contract_id.meal_allowance, 2)
-                line.total = round(line.amount * line.quantity, 0)
+                line.amount = round(self.contract_id.meal_allowance, 4)
+                line.total = round(line.amount * line.quantity, 4)
     def calIRG(self):
         """
         function qui calcule le salaire IRG
@@ -636,12 +641,12 @@ class PayslipWorked_days(models.Model):
     @api.onchange('number_of_days')
     def updateHours(self):
         for rec in self:
-            rec.number_of_hours = round(rec.number_of_days * 8, 0)
+            rec.number_of_hours = round(rec.number_of_days * 8, 4)
 
     @api.onchange('number_of_hours')
     def updateDays(self):
         for rec in self:
-            rec.number_of_days = round(rec.number_of_hours / 8, 1)
+            rec.number_of_days = round(rec.number_of_hours / 8, 4)
 
 class InputeLineIDS(models.Model):
     _inherit = 'hr.payslip.input'
