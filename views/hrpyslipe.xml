@@ -44,6 +44,7 @@
                             <field name="salaryRule"/>
                             <field name="code" required="False" string="Code régle"/>
                             <field name="amount"/>
+
                             <field name="contract_id" invisible="1"/>
                             <field name="sequence" invisible="True"/>
                         </tree>

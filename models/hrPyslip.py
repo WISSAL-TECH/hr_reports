@@ -381,13 +381,17 @@ class WsPayslip(models.Model):
         sql = f"SELECT MIN(date_start) FROM hr_contract WHERE  employee_id = {res_id}"
         cr.execute(sql)
         result = self.env.cr.fetchall()
+
         if result[0][0]:
+
             date_start = result[0][0]
             year = date_start.year
             print(date_start.year, "contra exp")
             print(today - year, "year exp")
             return today - year
+
         else:
+
             return 0
     def calSalaireBase(self):
         """

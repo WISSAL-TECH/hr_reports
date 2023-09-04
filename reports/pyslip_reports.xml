@@ -89,6 +89,8 @@
                                             <br/>
                                             <span t-field="o.employee_id.bank_account_id.acc_number"/>
                                             <br/>
+
+
                                             <span t-field="o.mode_pyment"/>
                                             <br/>
                                             <span t-field="o.employee_id.marital"/>

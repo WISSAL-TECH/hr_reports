@@ -44,8 +44,11 @@
                             <field name="training_end_date"/>
                         </group>
                     </group>
+
                 </group>
                 <xpath expr="//group[@name='salary']" position="inside">
+
+
                     <label for="cout_hours"/>
                     <div class="o_row" name="cout_hours">
                             <field name="cout_hours" string="COUT houres" nolabel="1" on_change="1" widget="monetary"/>
