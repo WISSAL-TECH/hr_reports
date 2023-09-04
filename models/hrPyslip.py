@@ -375,8 +375,7 @@ class WsPayslip(models.Model):
         today = date.today().year
         cr = self._cr
         res_id = self.employee_id.id
-        sql = f"SELECT MIN(date_start) FROM hr_contract WHERE state = 'open' AND employee_id = {res_id}"
-
+        sql = f"SELECT MIN(date_start) FROM hr_contract WHERE  employee_id = {res_id}"
         cr.execute(sql)
         result = self.env.cr.fetchall()
         if result[0][0]:
