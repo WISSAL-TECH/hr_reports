@@ -225,7 +225,6 @@ class WsPayslip(models.Model):
             jrTravail = None
         vals = [
             jrTravail,
-            ABSDAY
         ]
         for val in vals:
             env = self.env['hr.payslip.worked_days'].create(val)
@@ -601,7 +600,6 @@ class WsPayslip(models.Model):
         if self.employee_id.name:
             res = False
             if self.checkEntryWCM():
-                print("The beste of titanic")
                 res = super().compute_sheet()
                 self.calculPaie()
                 self.deleteNullEntry()
