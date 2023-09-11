@@ -25,7 +25,7 @@ class WsPayslip(models.Model):
                                     ], 'Mode de pyment', default='ESPECE')
 
     # code structure paie
-    codeJourTrav = 'WORK100'
+    codeJourTrav = '100'
     codeHorsup = 'WORK300'
     codeAbsence = 'LEAVE90'
     salaireBase = '100'
@@ -45,7 +45,7 @@ class WsPayslip(models.Model):
     @api.onchange('contract_id', 'struct_id')
     def Hrline(self):
         for rec in self:
-            if rec.contract_id :
+            if rec.contract_id:
                 rec.worked_days_line_ids = [(5, 0, 0)]
 
 
@@ -85,23 +85,23 @@ class WsPayslip(models.Model):
                         for rec in self:
                             rec.ruleIds2 = None
 
-
-    def calTotalGain(self):
+    def calTotalGainWcm(self):
         """
         function qui calcul le salaire total gagnée
         """
         self.totalGain = 0
-        if self.checkEntry():
+        if self.checkEntryWCM():
             for rec in self.line_ids:
                 if rec.code in self.listCodeGain:
                     self.totalGain += rec.total
         return self.totalGain
-    def calTotalRetenues(self):
+
+    def calTotalRetenuesWcm(self):
         """
         function qui calcul le salaire total retenus
         """
         self.totalRetenu = 0
-        if self.checkEntry():
+        if self.checkEntryWCM():
             for rec in self.line_ids:
                 if rec.code in self.listCodeRetenues:
                     self.totalRetenu += rec.total
@@ -361,10 +361,12 @@ class WsPayslip(models.Model):
         return res
 
 
-    def checkEntry(self):
+    def checkEntryWCM(self):
         """Function qui verfier les entrée du jour de travail
         elle retourne False(il y a un manque) ou True(si tu vas bien)"""
         test = False
+        print("Hello world")
+        print(self.worked_days_line_ids)
         if self.worked_days_line_ids:
             for rec in self.worked_days_line_ids:
                 if rec.code == self.codeJourTrav:
@@ -389,7 +391,8 @@ class WsPayslip(models.Model):
             return today - year
         else:
             return 0
-    def calSalaireBase(self):
+
+    def calSalaireBaseWcm(self):
         """
             function qui calcule le salaire de base d'un employée(employee)
         """
@@ -398,10 +401,10 @@ class WsPayslip(models.Model):
             # cas de salaire de base
             if rec.code == self.codeJourTrav:
                 for line in self.line_ids:
-                    if line.code == self.salaireBase:
+                    if line.code == self.codeJourTrav:
                         line.quantity = rec.number_of_days
                         line.rate = round(1, 2)
-                        amount = round(self.contract_id.wage / 22, 4)
+                        amount = round(self.contract_id.wage / 22, 2)
                         line.amount = amount
                         line.total = amount * line.quantity
                         salaireBase = line.total
@@ -469,18 +472,40 @@ class WsPayslip(models.Model):
                                 line.amount = rec.amount
                                 line.total = rec.amount
                                 break
-    def calSalaireIEP(self):
+    @api.onchange('struct_id')
+    def changeStruct(self):
+        if self.line_ids:
+            raise ValidationError("Erreur : Impossible de modifier la structure d'une feuille de paie déjà calculée.")
+
+
+    def getYearExperEMP(self):
+        """Function qui return le nombre d'année d'experience de l'employe """
+
+        today = date.today().year
+        cr = self._cr
+        res_id = self.employee_id.id
+        sql = "select min(date_start) from hr_contract where employee_id = "+str(res_id)
+        cr.execute(sql)
+        result = self.env.cr.fetchall()
+        if result[0][0]:
+            date_start = result[0][0]
+            year = date_start.year
+            return today - year
+        else:
+            return 0
+
+    def calSalaireIEPWcm(self):
         """
             function qui calcule le salaire IEP
         """
-        salaireBase = self.calSalaireBase()
+        salaireBase = self.calSalaireBaseWcm()
         for line in self.line_ids:
             if line.code == self.iep:
-                line.quantity = self.getYearExpEMP()
+                line.quantity = self.getYearExperEMP()
                 yearExp = line.quantity
                 line.amount = salaireBase
                 line.rate = round(1, 2)
-                line.total = round(salaireBase * yearExp/100, 5)
+                line.total = round(salaireBase * yearExp / 100, 2)
                 break
     def calSalaireRSS(self):
         """
@@ -554,18 +579,18 @@ class WsPayslip(models.Model):
 
 
 
-    def calculPaieWcm(self):
+    def calculPaie(self):
         """
             function qui calcule la paie d'un employer de wcm
         """
         # calculer le salaire de base:
-        self.calSalaireBase()
+        self.calSalaireBaseWcm()
         # caculer les heure sup:
         self.calHoursSup()
         # calculer les autre entrée(frais de mission)
         self.calFraiMission()
         #calculer le salaire IEP code '103':
-        self.calSalaireIEP()
+        self.calSalaireIEPWcm()
         #calculer le salaire retrnu SS code '201':
         self.calSalaireRSS()
         #calculer la prime de transport et la prime de panier
@@ -573,8 +598,8 @@ class WsPayslip(models.Model):
         #calculer le salaire irg
         self.calIRG()
         #calculer le total gain et total retenu et:
-        self.calTotalGain()
-        self.calTotalRetenues()
+        self.calTotalGainWcm()
+        self.calTotalRetenuesWcm()
 
 
 
@@ -598,8 +623,8 @@ class WsPayslip(models.Model):
                 if not self.line_ids:
                     objet.write({'totalGain': 0, 'totalRetenu': 0, 'salairePoste': 0,'salaireImposable': 0})
                 else:
-                    totalGain = self.calTotalGain()
-                    totalReatenu =self.calTotalRetenues()
+                    totalGain = self.calTotalGainWcm()
+                    totalReatenu =self.calTotalRetenuesWcm()
                     salairePoste = self.calSalairePoste()
                     salaireImposable = self.calSalaireImposable()
                     objet.write({'totalGain': totalGain, 'totalRetenu': totalReatenu, 'salairePoste': salairePoste,
@@ -611,16 +636,16 @@ class WsPayslip(models.Model):
                 """
         if self.employee_id.name:
             res = False
-            if self.checkEntry():
+            if self.checkEntryWCM():
+                print("The beste of titanic")
                 res = super().compute_sheet()
-                self.calculPaieWcm()
+                self.calculPaie()
                 self.deleteNullEntry()
             else:
                 self.totalRetenu = 0
                 self.totalGain = 0
                 self.salairePoste = 0
                 self.salaireImposable = 0
-            return res
         else:
             return super().compute_sheet()
 
