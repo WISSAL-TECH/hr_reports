@@ -152,11 +152,9 @@ class WsPayslip(models.Model):
         number de jour present
         """
         list_prestation = self.env['hr.work.entry'].search([
-
-                ('date_start', '>=', datetime.combine(self.date_from, time.min)),
-                ('date_stop', '<=', datetime.combine(self.date_to, time.min)),
-                ('date_stop', '<=', today),
-                ('employee_id', '=', self.employee_id.id),
+            ('date_start', '>=', datetime(self.date_from.year, self.date_from.month, self.date_from.day)),
+            ('date_stop', '<=', datetime(self.date_to.year, self.date_to.month, self.date_to.day)),
+            ('employee_id', '=', self.employee_id.id),
             ('work_entry_type_id.code', '=', self.codeJourTrav)
         ])
         nbr_jour = 0
@@ -165,11 +163,13 @@ class WsPayslip(models.Model):
             new_list_timesheet = []
             for i in list_prestation:
                 nbr_heure += i.duration
-                nbr_jour = round(nbr_heure / 8, 4)
+                nbr_jour = round(nbr_heure / 8, 2)
 
         else:
-            # afficher un message que la feuille de temps est vide
-            raise ValidationError("Erreur!, La Prestaion  de temps est vide!!")
+            error = ValidationError(f'La feuille de temps de {self.employee_id.name}'
+                                    f' du {self.date_from} au {self.date_to}, ne comporte aucune journée de travail.')
+            # afficher un message que la prestation est vide
+            raise error
         return nbr_jour
 
 
@@ -188,8 +188,8 @@ class WsPayslip(models.Model):
                 break
         else:
             id_payslip = 0
-        dayabsence = self.getdayabsence()
-        heureSuplim = self.getHoursup()
+        dayabsence = self.getdayabsenceEMP()
+        print(dayabsence)
         if dayabsence != 0:
             id_dayBS = self.env['hr.work.entry'].search([
                 ('date_start', '>=', datetime.combine(self.date_from, time.min)),
@@ -197,34 +197,15 @@ class WsPayslip(models.Model):
                 ('employee_id', '=', self.employee_id.id),
                 ('work_entry_type_id.code', '=', self.codeAbsence)
             ], limit=1)
+            print("je suis la")
             ABSDAY = {
                     'payslip_id': id_payslip,
-                'work_entry_type': id_dayBS.work_entry_type_id.id,
+                    'work_entry_type': id_dayBS.work_entry_type_id.id,
                     'code':self.codeAbsence,
                     'number_of_hours': dayabsence,
-                    'number_of_days': round(dayabsence / 8, 4),
+                    'number_of_days': round(dayabsence / 8, 2),
                     'contract_id': contrat_id,
             }
-        else:
-            ABSDAY = None
-        if heureSuplim != 0:
-            id_hsup = self.env['hr.work.entry'].search([
-                ('date_start', '>=', datetime.combine(self.date_from, time.min)),
-                ('date_stop', '<=', datetime.combine(self.date_to, time.min)),
-                ('employee_id', '=', self.employee_id.id),
-                ('work_entry_type_id.code', '=', self.codeHorsup)
-            ], limit=1)
-
-            HOURSUP = {
-                    'payslip_id': id_payslip,
-                'code': self.codeHorsup,
-                'work_entry_type': id_hsup.work_entry_type_id.id,
-                    'number_of_hours': heureSuplim,
-                    'number_of_days': round(heureSuplim / 8, 4),
-                    'contract_id': contrat_id,
-            }
-        else:
-            HOURSUP = None
         if jourTravail != 0:
             id_jrT = self.env['hr.work.entry'].search([
                 ('date_start', '>=', datetime.combine(self.date_from, time.min)),
@@ -236,7 +217,7 @@ class WsPayslip(models.Model):
                     'payslip_id': id_payslip,
                 'code': self.codeJourTrav,
                 'work_entry_type': id_jrT.work_entry_type_id.id,
-                    'number_of_hours': round(jourTravail * 8, 4),
+                    'number_of_hours': round(jourTravail * 8, 2),
                     'number_of_days': jourTravail,
                     'contract_id': contrat_id,
             }
@@ -244,9 +225,7 @@ class WsPayslip(models.Model):
             jrTravail = None
         vals = [
             jrTravail,
-            ABSDAY,
-            HOURSUP
-
+            ABSDAY
         ]
         for val in vals:
             env = self.env['hr.payslip.worked_days'].create(val)
@@ -274,34 +253,19 @@ class WsPayslip(models.Model):
         else:
             return False
 
-    def getDayAbsense(self):
-        today = datetime.today()
-        """
-        function qui retourne les jour absenter d'une employee
-        elle prend trois param date debut, fin et employee
-        """
-        leave_count = self.env['hr.work.entry'].search_count([('date_start', '>=', datetime.combine(self.date_from, time.min)),
-             ('date_stop', '<=', datetime.combine(self.date_to, time.min)),
-             ('date_stop', '<=', today),
-             ('employee_id', '=', self.employee_id.id),
-             ('work_entry_type_id.code', '=', self.codeAbsence)])
-        return leave_count
+    def getdayabsenceEMP(self):
 
-    def getdayabsence(self):
         today = datetime.today()
-        """
-        function qui retourne les jour suplimentaire X1.5 d'une employee
-        elle prend trois param date debut, fin et employee
-        """
-        Prestation = self.env['hr.work.entry'].search(
-            [('date_start', '>=', datetime.combine(self.date_from, time.min)),
-             ('date_stop', '<=', datetime.combine(self.date_to, time.min)),
-             ('date_stop', '<=', today),
-             ('employee_id', '=', self.employee_id.id),
-             ('work_entry_type_id.code', '=', self.codeAbsence)])
+        prestation = self.env['hr.work.entry'].search([
+            ('date_start', '>=', datetime(self.date_from.year, self.date_from.month, self.date_from.day)),
+            ('date_stop', '<=', datetime(self.date_to.year, self.date_to.month, self.date_to.day)),
+            ('employee_id', '=', self.employee_id.id),
+            ('work_entry_type_id.code', '=', self.codeAbsence)])
         amount = 0
-        if Prestation:
-            for rec in Prestation:
+        print("Hello nadjet")
+        print(prestation)
+        if prestation:
+            for rec in prestation:
                 amount+= round(rec.duration , 4)
 
         return amount

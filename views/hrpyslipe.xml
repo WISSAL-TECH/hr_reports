@@ -8,12 +8,12 @@
             <field name="arch" type="xml">
                 <xpath expr="//page//field[@name='worked_days_line_ids']" position="before">
                     <field name="checkInputs" invisible="1" widget="boolean_toggle"/>
-                    <button confirm="Etes-vous sur d'importer depuis la time sheet?"
+                    <button confirm="Etes-vous sur d'importer depuis la prestation?"
                             type="object" name="ImportPrestation"
                             class="d-flex justify-content-end"
                             attrs="{'invisible' : [('checkInputs', '=', False)]}"
                     >
-                        Importer la Prestation
+                        Importer depuis la Prestation
                     </button>
                 </xpath>
 
