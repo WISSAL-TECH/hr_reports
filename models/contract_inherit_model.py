@@ -14,13 +14,9 @@ class WsContractInherit(models.Model):
     cjm = fields.Monetary('Cjm')
     tjm = fields.Monetary("Tjm")
 
-
-
-
-
-    salire_net = fields.Monetary("Salaire mensuel (net)")
-    salire_anuell = fields.Monetary("Salaire annuel (brut)")
-    salire_monsuel = fields.Monetary("salaire mensuel (brut")
+    salire_net = fields.Monetary("Salaire mensuel(net)")
+    salire_anuell = fields.Monetary("Salaire annuel(brut)")
+    salire_monsuel = fields.Monetary("Salaire mensuel(brut)")
 
     @api.onchange('wage')
     def CalculCoutHours(self):
