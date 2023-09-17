@@ -56,9 +56,9 @@
                             <field name="salire_net"  nolabel="1" on_change="1" widget="monetary"/>
                            <span>/mois</span>
                         </div>
-                    <label for="salire_anuell"/>
-                    <div class="o_row" name="salire_anuell">
-                            <field name="salire_anuell"  nolabel="1" on_change="1" widget="monetary"/>
+                    <label for="salaire_annuel"/>
+                    <div class="o_row" name="salaire_annuel">
+                            <field name="salaire_annuel"  nolabel="1" on_change="1" widget="monetary"/>
                             <span>/mois</span>
                         </div>
                     <label for="salire_monsuel"/>
