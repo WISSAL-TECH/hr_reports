@@ -119,7 +119,7 @@
                                     <th>Désignation</th>
                                     <th>Nbre/Taux</th>
                                     <th>Montant</th>
-                                    <th>Gaints</th>
+                                    <th>Gains</th>
                                     <th>Retenues</th>
                                 </tr>
                             </thead>
@@ -176,7 +176,7 @@
 
                                 <tr style="background-color: #84a3ae; text-align:center;">
                                     <th colspan="2">SALAIRE DE POSTE</th>
-                                    <th>SALIARE IMPOSABLE</th>
+                                    <th>SALAIRE IMPOSABLE</th>
                                     <th>TOTAL GAINS</th>
                                     <th>TOTAL RETENUES</th>
                                     <th>NET A PAYER</th>
