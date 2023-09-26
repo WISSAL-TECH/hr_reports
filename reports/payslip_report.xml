@@ -30,8 +30,8 @@
                                     <tr>
                                         <th width="150px" style="text-align:center;">
                                             <div>
-                                                <img t-att-src="image_data_uri(o.company_id.logo)" width="60%"
-                                                     height="60%"/>
+                                                <img t-att-src="image_data_uri(o.company_id.logo)" width="80%"
+                                                     height="80%"/>
                                             </div>
                                         </th>
 
