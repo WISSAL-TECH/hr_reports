@@ -4,8 +4,8 @@
         <template id="wcm_qweb_paie" inherit_id="hr_reports.ws_report_payslip">
             <xpath expr="//t[@t-call='web.basic_layout']" position="replace">
                 <t t-call="web.basic_layout">
-                    <h2 style="font-weight: bold; text-align: center; margin-bottom: 2em; border: 1px solid black;  background-color: #6cb9ff; padding: 0.5em;">
-                        BULLETIN DE PAIE
+                    <h2 style="font-weight: bold; text-align: center; margin-bottom: 2em; border: 1px solid black;  background-color: #6cb9ff;">
+                        BULLETIN DE PAIE <span t-field="o.month"/>
                     </h2>
                                  <div class="page">
                         <table class="table table-sm table-bordered">
@@ -30,8 +30,8 @@
                                     <tr>
                                         <th width="150px" style="text-align:center;">
                                             <div>
-                                                <img t-att-src="image_data_uri(o.company_id.logo)" width="60%"
-                                                     height="60%"/>
+                                                <img t-att-src="image_data_uri(o.company_id.logo)" width="80%"
+                                                     height="80%"/>
                                             </div>
                                         </th>
 
@@ -121,7 +121,7 @@
                                     <th>Désignation</th>
                                     <th>Nbre/Taux</th>
                                     <th>Montant</th>
-                                    <th>Gaints</th>
+                                    <th>Gains</th>
                                     <th>Retenues</th>
                                 </tr>
                             </thead>
@@ -229,7 +229,7 @@
 
                                 <tr style="background-color: #84a3ae; text-align:center;">
                                     <th colspan="2">SALAIRE DE POSTE</th>
-                                    <th>SALIARE IMPOSABLE</th>
+                                    <th>SALAIRE IMPOSABLE</th>
                                     <th>TOTAL GAINS</th>
                                     <th>TOTAL RETENUES</th>
                                     <th>NET A PAYER</th>
