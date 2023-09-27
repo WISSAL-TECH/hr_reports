@@ -48,16 +48,16 @@ class WsPayslip(models.Model):
             record.month = month_name
 
     # code structure paie
-    codeJourTrav = '100'
+    codeJourTrav = 'R020'
     codeHorsup = 'WORK300'
-    codeAbsence = 'LEAVE90'
-    salaireBase = '100'
-    iep = '103'
-    primPanier = '207'
-    primTrans = '210'
-    fraisMission = '315'
-    retenuSS = '201'
-    irg = '301'
+    codeAbsence = 'R033'
+    salaireBase = 'R001'
+    iep = 'R035'
+    primPanier = 'R060'
+    primTrans = 'R063'
+    fraisMission = 'R080'
+    retenuSS = 'R040'
+    irg = 'R090'
     listCodeOther = [fraisMission]
     listCodeJourTravailer = [codeJourTrav, codeHorsup, codeAbsence]
     listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission]
