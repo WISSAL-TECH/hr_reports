@@ -1,9 +1,12 @@
 from odoo import models, fields, api
 import random, string
+import locale
 from datetime import date, datetime, time
 from odoo.exceptions import ValidationError
 from odoo import http
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+
+locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')  # Set the locale to French
 
 class WsPayslip(models.Model):
     _inherit = 'hr.payslip'
