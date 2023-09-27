@@ -19,15 +19,15 @@
                                         Num Empl: 1961383550
                                     </th>
                                     <td width="150px" rowspan="2">
-                                        Raison Sociale: SARL WISSAL-SYSTEMS-RH
+                                        Raison Sociale: <span t-field="o.company.street"/>
                                         <BR/>
-                                        Adresse: LOTS 74 MAKAM CHAHID SETIF
+                                        Adresse: <span t-field="o.company.nif"/>
                                         <BR/>
                                         Activité: BUREAU D'ETUDES INFORMATIQUES
                                         <BR/>
-                                        RC: 19/01-00899758B12
+                                        RC: <span t-field="o.company.rc_id"/>2
                                         <BR/>
-                                        NIF: 001219008975878
+                                        NIF: <span t-field="o.company.nif"/>
                                         <BR/>
                                     </td>
                                     <tr>
