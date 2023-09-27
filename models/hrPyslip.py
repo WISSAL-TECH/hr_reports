@@ -27,8 +27,7 @@ class WsPayslip(models.Model):
 
     def _compute_current_month(self):
         for record in self:
-            date_to = datetime.strptime(record.date_to, DEFAULT_SERVER_DATE_FORMAT)
-            month_name = date_to.strftime('%B')
+            month_name = record.date_to.strftime('%B')
             record.month = month_name
 
 
