@@ -3,7 +3,7 @@ import random, string
 from datetime import date, datetime, time
 from odoo.exceptions import ValidationError
 from odoo import http
-
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 class WsPayslip(models.Model):
     _inherit = 'hr.payslip'
@@ -26,7 +26,10 @@ class WsPayslip(models.Model):
     month = fields.Char(string='month', compute='_compute_current_month')
 
     def _compute_current_month(self):
-        self.month = str(self.date_to.month)
+        for record in self:
+            date_to = datetime.strptime(record.date_to, DEFAULT_SERVER_DATE_FORMAT)
+            month_name = date_to.strftime('%B')
+            record.month = month_name
 
 
     # code structure paie
