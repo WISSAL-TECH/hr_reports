@@ -5,12 +5,15 @@
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.basic_layout">
                     <h2 style="font-weight: bold; text-align: center; margin-bottom: 2em; border: 1px solid black;  background-color: #6cb9ff;">
-                        BULLETIN DE PAIE
+                        BULLETIN DE PAIE <span t-field="o.month"/>
                     </h2>
+
+
                     <div class="page">
                         <table class="table table-sm table-bordered">
                             <tr>
                                 <th colspan="2" style="text-align:center; background-color: #84a3ae">Employeur</th>
+
                                 <tr>
                                     <th style="text-align:center; background-color: #84a3ae" width="150px">
                                         Num Empl: 1961383550

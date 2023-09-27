@@ -23,6 +23,11 @@ class WsPayslip(models.Model):
     mode_pyment = fields.Selection([('ESPECE', 'ESPECE'),
                                     ('VERSEMENT', 'VERSEMENT')
                                     ], 'Mode de pyment', default='ESPECE')
+    month = fields.Char(string='month', compute='_compute_current_month')
+
+    def _compute_current_month(self):
+        self.month = str(self.date_to.month)
+
 
     # code structure paie
     codeJourTrav = '100'
