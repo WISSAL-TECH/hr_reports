@@ -25,7 +25,7 @@
                                         <BR/>
                                         Activité: BUREAU D'ETUDES INFORMATIQUES
                                         <BR/>
-                                        RC: <span t-field="o.company.rc_id"/>2
+                                        RC: <span t-field="o.company.rc_id"/>
                                         <BR/>
                                         NIF: <span t-field="o.company.nif"/>
                                         <BR/>
