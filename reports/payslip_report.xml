@@ -31,7 +31,6 @@
                                     <br/>
                                     Activité:
                                     <span t-field="o.company.company_activity"/>
-
                                     <br/>
                                     RC:
                                     <span t-field="o.company.rc_id"/>
