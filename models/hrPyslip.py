@@ -58,9 +58,10 @@ class WsPayslip(models.Model):
     fraisMission = 'R080'
     retenuSS = 'R040'
     irg = 'R090'
+    hsupp = 'hsupp'
     listCodeOther = [fraisMission]
     listCodeJourTravailer = [codeJourTrav, codeHorsup, codeAbsence]
-    listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission]
+    listCodeGain = [salaireBase, iep, primPanier, primTrans, fraisMission, hsupp]
     listCodeRetenues = [retenuSS, irg]
 
 
