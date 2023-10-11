@@ -109,14 +109,14 @@ class WsPayslip(models.Model):
                         for rec in self:
                             rec.ruleIds2 = None
 
-    def calTotalGainWcm(self):
+    def calTotalGain(self):
         """
         function qui calcul le salaire total gagnée
         """
         self.totalGain = 0
         if self.checkEntryWCM():
             for rec in self.line_ids:
-                if rec.code in self.listCodeGain:
+                if rec.code in self.listCodeGain or rec.code == 'hsupp':
                     self.totalGain += rec.total
         return self.totalGain
 
