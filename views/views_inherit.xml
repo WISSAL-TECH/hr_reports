@@ -66,6 +66,11 @@
                             <field name="salire_monsuel"  nolabel="1" on_change="1" widget="monetary"/>
                             <span>/mois</span>
                         </div>
+                    <label for="mission"/>
+                    <div class="o_row" name="mission">
+                            <field name="mission"  nolabel="1" on_change="1" widget="monetary"/>
+                            <span>/mois</span>
+                        </div>
                 </xpath>
             </field>
         </record>
