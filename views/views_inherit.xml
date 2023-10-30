@@ -56,11 +56,11 @@
                             <field name="salire_net"  nolabel="1" on_change="1" widget="monetary"/>
                            <span>/mois</span>
                         </div>
-                    <label for="salaire_annuel"/>
+                  <!--  <label for="salaire_annuel"/>
                     <div class="o_row" name="salaire_annuel">
                             <field name="salaire_annuel"  nolabel="1" on_change="1" widget="monetary"/>
                             <span>/mois</span>
-                        </div>
+                        </div>!-->
                     <label for="salire_monsuel"/>
                     <div class="o_row" name="salire_monsuel">
                             <field name="salire_monsuel"  nolabel="1" on_change="1" widget="monetary"/>
